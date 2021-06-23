@@ -4,10 +4,10 @@
 ## **Virág webshop admin felület - Annie's Flowers**
 
 **A program céljának leírása**
-> A program egy virág webshopnak az admin oldalát testesíti meg, ahol a navigációs bárok segítenek az oldalon elnavigálni .
+> A program egy virág webshopnak az admin oldalát testesíti meg, és a menüpontok segítenek a vásárlóknak az oldal használatában.
 ---
 ## _**1. Főoldal**_
-> A főoldalon látható lesz egy navigációs bár a bal oldalon (tetején az oldal logójával), ami az aloldalakra fog navigálni (kezdőlap, rólunk, szolgáltatások,kapcsolat, webshop). És egy kezdő kép alatt egy másik navigációs bár,ahol a kategóriák közül tudunk választani (Hello Nyár, Üdv Ősz, Szia Tél, Hahó Tavasz, Dekorációk otthonra).
+> A főoldalon látható lesz a menü bal oldalon (tetején az oldal logójával), ami az aloldalakra fogja vinni a vásárlókat (kezdőlap, rólunk, szolgáltatások,kapcsolat, webshop). És egy kezdő kép alatt egy másik menü lesz található,ahol a kategóriák közül tud választani a felhasználó(Hello Nyár, Üdv Ősz, Szia Tél, Hahó Tavasz, Dekorációk otthonra).
 
 **Elfogadási kritérium:**  
 
@@ -16,7 +16,7 @@ Mobil és desktop kompatibilis nézet.
 ---
 ## **2. Kezdőlap**
 
-> A kezdőlap gombra kattintva bejön egy bemutatkozó felület a virág webshop történetéről. 
+> A kezdőlapon elérhető a bemutatkozó felület a virág webshop történetéről. 
 
 **Elfogadási kritérium**
 
@@ -26,7 +26,7 @@ Mobil és desktop kompatibilis kinézet.
 
 ## **3. Rólunk**
 
-> A rólunk gombra kattintva megismerkedhetünk a virág webshop dolgozóival. 
+> A rólunk aloldaon megismerkedhetünk a virág webshop dolgozóival. 
 
 **Elfogadási kritérium**
 
@@ -35,7 +35,7 @@ Mobil és desktop kompatibilis kinézet.
 ---
 ## **4. Szolgáltatások**
 
-> A szolgáltatások gombra kattintva elérjük az oldalon által nyújtott lehetőségeket a vásárlók számára. 
+> A szolgáltatások aloldalon elérhető a webshop által nyújtott lehetőségeket a vásárlók számára. 
 
 **Elfogadási kritérium**
 
@@ -44,7 +44,7 @@ Mobil és desktop kompatibilis kinézet.
 ---
 ## **5. Kapcsolat**
 
-> A kapcsolat gombra kattintva elérjük az webshop elérhetőségeit. 
+> A kapcsolat aloldalon elérhetjük a webshop elérhetőségeit. 
 
 **Elfogadási kritérium**
 
@@ -53,7 +53,7 @@ Mobil és desktop kompatibilis kinézet.
 ---
 ## **6. Webshop**
 
-> A webshop gombra kattintva elérjük a webshopot a középen található navigációs bárt amellyel elérjük az alábbi aloldalakat (Hello Nyár, Üdv Ősz, Szia Tél, Hahó Tavasz, Dekorációk otthonra). 
+> A webshop aloldalon a vásárló a menü segítségével további aloldalakat tud elérni (Hello Nyár, Üdv Ősz, Szia Tél, Hahó Tavasz, Dekorációk otthonra). 
 
 **Elfogadási kritérium**
 
@@ -62,7 +62,7 @@ Mobil és desktop kompatibilis kinézet.
 ---
 ## **7. Hello Nyár**
 
-> A gombra kattintva elérjük a szezonális nyári virágokat. 
+> A vásárló a szezonális nyári virágok közül válogathat. 
 
 **Elfogadási kritérium**
 
@@ -71,7 +71,7 @@ Mobil és desktop kompatibilis kinézet.
 ---
 ## **7. Üdv Ősz**
 
-> A gombra kattintva elérjük a szezonális őszi virágokat. 
+> A vásárló a szezonális őszi virágok közül válogathat. 
 
 **Elfogadási kritérium**
 
@@ -80,7 +80,7 @@ Mobil és desktop kompatibilis kinézet.
 ---
 ## **7. Szia Tél**
 
-> A gombra kattintva elérjük a szezonális téli virágokat. 
+> A vásárló a szezonális téli virágok közül válogathat. 
 
 **Elfogadási kritérium**
 
@@ -89,7 +89,7 @@ Mobil és desktop kompatibilis kinézet.
 ---
 ## **7. Hahó Tavasz**
 
-> A gombra kattintva elérjük a szezonális tavaszi virágokat. 
+> A vásárló a szezonális tavaszi virágok közül válogathat. 
 
 **Elfogadási kritérium**
 
@@ -98,7 +98,7 @@ Mobil és desktop kompatibilis kinézet.
 ---
 ## **8. Dekorációk otthonra**
 
-> A gombra kattintva elérjük dekorációkat, amik közül válogathatunk. 
+> A vásárló a az otthoni dekorációk közül válogathat. 
 
 **Elfogadási kritérium**
 
