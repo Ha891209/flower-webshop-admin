@@ -36,6 +36,22 @@ Mobil és desktop kompatibilis kinézet.
 ## **4. Szolgáltatások**
 
 > A szolgáltatások aloldalon elérhető a webshop által nyújtott lehetőségeket a vásárlók számára. 
+Egy táblázatban lesznek megjelenítve a virágok, az oldal tetején lehetőség van új virág felvételére. A a virágokat törölni és módosítani is lehet. 
+
+### Táblázat fejlécei:
+- Virág neve
+- Kategória
+- Van-e még raktáron
+- Ár
+
+**Elfogadási kritérium**
+
+- A táblázat felett legyen lehetőség új virág felvételére.
+- Lehessen törölni és módosítani a táblázat tartalmát. 
+- Lehessen kategóriák szerint keresni a táblázat tartalmán belül.
+- A felhasználó tudja rendezni a táblázat oszlopait növekvő, illetve csökkenő sorrendbe. 
+- Mobil és desktop kompatibilis kinézet.
+---
 
 **Elfogadási kritérium**
 
@@ -50,6 +66,27 @@ Mobil és desktop kompatibilis kinézet.
 
 Mobil és desktop kompatibilis kinézet.
 ---
+---
+
+## **5. Megrendelések aloldal**
+---
+> Ezen az aloldalon egy táblázatban lesznek megjelenítve a megrendelések. Az oldal tetején lehetőség van új megrendelés hozzáadásához. Valamint a megrendeléseket tudjuk módosítani, és törölni is. 
+Az oldal tetején lévő keresőmező segítségével keresni is tudunk a megrendelések között. 
+
+### Táblázat fejlécei:
+ - Megrendelt virág neve
+ - Megrendelő neve
+ - Megrendelő email címe
+ - A rendelés árának összege
+ - Megrendelés dátuma
+
+**Elfogadási kritérium**
+
+- A táblázat felett lehetőség új megrendelés felvételére.
+- Lehessen törölni és módosítani a táblázat tartalmát. 
+- Lehessen kategóriák szerint keresni a táblázat tartalmán belül.
+- A felhasználó tudja rendezni a táblázat oszlopait növekvő, illetve csökkenő sorrendbe. 
+- Mobil és desktop kompatibilis kinézet.
 ---
 ## **6. Webshop**
 
