@@ -7,7 +7,7 @@
 > A program egy virág webshopnak az admin oldalát testesíti meg, és a menüpontok segítenek a vásárlóknak az oldal használatában.
 ---
 ## _**1. Főoldal**_
-> A főoldalon látható lesz a menü bal oldalon (tetején az oldal logójával), ami az aloldalakra fogja vinni a vásárlókat (kezdőlap, rólunk, szolgáltatások,kapcsolat, webshop). És egy kezdő kép alatt egy másik menü lesz található,ahol a kategóriák közül tud választani a felhasználó(Hello Nyár, Üdv Ősz, Szia Tél, Hahó Tavasz, Dekorációk otthonra).
+> A főoldalről elérhetjük az aloldalakat (kezdőlap, rólunk, szolgáltatások,kapcsolat, webshop) és kategóriákat(Hello Nyár, Üdv Ősz, Szia Tél, Hahó Tavasz, Dekorációk otthonra).
 
 **Elfogadási kritérium:**  
 
@@ -21,7 +21,7 @@ Mobil és desktop kompatibilis nézet.
 **Elfogadási kritérium**
 
 Mobil és desktop kompatibilis kinézet.
----
+
 ---
 
 ## **3. Rólunk**
@@ -31,12 +31,12 @@ Mobil és desktop kompatibilis kinézet.
 **Elfogadási kritérium**
 
 Mobil és desktop kompatibilis kinézet.
----
+
 ---
 ## **4. Szolgáltatások**
 
 > A szolgáltatások aloldalon elérhető a webshop által nyújtott lehetőségeket a vásárlók számára. 
-Egy táblázatban lesznek megjelenítve a virágok, az oldal tetején lehetőség van új virág felvételére. A a virágokat törölni és módosítani is lehet. 
+Egy táblázatban lesznek megjelenítve a virágok és lehetőség van új virág felvételére. A a virágokat törölni és módosítani is lehet. 
 
 ### Táblázat fejlécei:
 - Virág neve
@@ -56,7 +56,7 @@ Egy táblázatban lesznek megjelenítve a virágok, az oldal tetején lehetősé
 **Elfogadási kritérium**
 
 Mobil és desktop kompatibilis kinézet.
----
+
 ---
 ## **5. Kapcsolat**
 
@@ -65,12 +65,12 @@ Mobil és desktop kompatibilis kinézet.
 **Elfogadási kritérium**
 
 Mobil és desktop kompatibilis kinézet.
----
+
 ---
 
 ## **5. Megrendelések aloldal**
 ---
-> Ezen az aloldalon egy táblázatban lesznek megjelenítve a megrendelések. Az oldal tetején lehetőség van új megrendelés hozzáadásához. Valamint a megrendeléseket tudjuk módosítani, és törölni is. 
+> Ezen az aloldalon egy táblázatban lesznek megjelenítve a megrendelések. Az oldalon lehetőség van új megrendelés hozzáadásához. Valamint a megrendeléseket tudjuk módosítani, és törölni is. 
 Az oldal tetején lévő keresőmező segítségével keresni is tudunk a megrendelések között. 
 
 ### Táblázat fejlécei:
@@ -95,52 +95,52 @@ Az oldal tetején lévő keresőmező segítségével keresni is tudunk a megren
 **Elfogadási kritérium**
 
 Mobil és desktop kompatibilis kinézet.
----
+
 ---
 ## **7. Hello Nyár**
 
-> A vásárló a szezonális nyári virágok közül válogathat. 
+> A vásárló a szezonális nyári virágok közül válogathat. Virágcsokrok és virágdobozok közül van lehetőség válogatni, szereplnek a virágok nevei és árai.
 
 **Elfogadási kritérium**
 
 Mobil és desktop kompatibilis kinézet.
----
+
 ---
 ## **7. Üdv Ősz**
 
-> A vásárló a szezonális őszi virágok közül válogathat. 
+> A vásárló a szezonális őszi virágok közül válogathat. Virágcsokrok és virágdobozok közül van lehetőség válogatni, szereplnek a virágok nevei és árai.
 
 **Elfogadási kritérium**
 
 Mobil és desktop kompatibilis kinézet.
----
+
 ---
 ## **7. Szia Tél**
 
-> A vásárló a szezonális téli virágok közül válogathat. 
+> A vásárló a szezonális téli virágok közül válogathat. Virágcsokrok és virágdobozok közül van lehetőség válogatni, szereplnek a virágok nevei és árai.
 
 **Elfogadási kritérium**
 
 Mobil és desktop kompatibilis kinézet.
----
+
 ---
 ## **7. Hahó Tavasz**
 
-> A vásárló a szezonális tavaszi virágok közül válogathat. 
+> A vásárló a szezonális tavaszi virágok közül válogathat. Virágcsokrok és virágdobozok közül van lehetőség válogatni, szereplnek a virágok nevei és árai.
 
 **Elfogadási kritérium**
 
 Mobil és desktop kompatibilis kinézet.
----
+
 ---
 ## **8. Dekorációk otthonra**
 
-> A vásárló a az otthoni dekorációk közül válogathat. 
+> A vásárló a az otthoni dekorációk közül válogathat. Az oldalon ajtódíszek közül tudunk válogatni, ahol szerepelnek a dekorációk nevei és árai.
 
 **Elfogadási kritérium**
 
 Mobil és desktop kompatibilis kinézet.
----
+
 ---
 ## **Egyéb információk**
 
