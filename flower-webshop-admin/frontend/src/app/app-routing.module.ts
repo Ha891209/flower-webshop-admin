@@ -1,17 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DashboardComponent } from './page/dashboard/dashboard.component';
+import { BillsComponent } from './page/bills/bills.component';
+import { CustomersComponent } from './page/customers/customers.component';
+import { DeliveriesComponent } from './page/deliveries/deliveries.component';
+import { HomeComponent } from './page/home/home.component';
+import { OrdersComponent } from './page/orders/orders.component';
 import { ProductsComponent } from './page/products/products.component';
-import { UsersComponent } from './users/users.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: DashboardComponent,
+    component: HomeComponent,
   },
   {
-    path: 'users',
-    component: UsersComponent,
+    path: 'customers',
+    component: CustomersComponent
   },
   {
     path: 'products',
@@ -19,7 +22,15 @@ const routes: Routes = [
   },
   {
     path: 'orders',
-    component: UsersComponent,
+    component: OrdersComponent,
+  },
+  {
+    path: 'bills',
+    component: BillsComponent,
+  },
+  {
+    path: 'deliveries',
+    component: DeliveriesComponent,
   },
   {
     path: '**',

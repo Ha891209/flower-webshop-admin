@@ -5,20 +5,21 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { DashboardComponent } from './page/dashboard/dashboard.component';
+import { HomeComponent } from './page/home/home.component';
+
 import { OrdersComponent } from './page/orders/orders.component';
 import { ProductsComponent } from './page/products/products.component';
-import { UsersComponent } from './users/users.component';
+import { CustomersComponent } from './page/customers/customers.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent,
-    UsersComponent,
     ProductsComponent,
     OrdersComponent,
-    HomeComponent
+    HomeComponent,
+    CustomersComponent,
+
 
   ],
   imports: [
