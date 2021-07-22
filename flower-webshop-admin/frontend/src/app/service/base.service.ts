@@ -9,31 +9,30 @@ import { ConfigService } from './config.service';
 })
 export class BaseService<T extends { active?: boolean, _id?: string, price?: number }> {
 
+  private readonly apiUrl: string = 'http://localhost:3000';
   entity: string = '';
 
   constructor(
-    public config: ConfigService,
     public http: HttpClient
   ) { }
 
   getAll(): Observable<T[]> {
-    return new Observable<T[]>(observer => {
-      let currentData: T[] = [];
-      this.http.get<T[]>(`${this.config.apiUrl}${this.entity}`).subscribe(
-        data => {
-          currentData = data;
-          observer.next(data);
-        }
-      );
-
-      interval(5000).subscribe(
-        num => currentData[0].price = Math.round(Math.random() * 10000)
-      );
-    });
+    return this.http.get<T[]>(`${this.apiUrl}/${this.entity}`);
   }
 
-  get(_id: string): Observable<T> {
-    return this.http.get<T>(`${this.config.apiUrl}${this.entity}/${_id}`);
+  getOne(_id: string): Observable<T> {
+    return this.http.get<T>(`${this.apiUrl}/${this.entity}/${_id}`);
   }
 
+  create(entity: T): Observable<T> {
+    return this.http.post<T>(`${this.apiUrl}/${this.entity}`, entity);
+  }
+
+  update(entity: T): Observable<T> {
+    return this.http.patch<T>(`${this.apiUrl}/${this.entity}/${entity._id}`, entity);
+  }
+
+  delete(_id: string): Observable<T> {
+    return this.http.delete<T>(`${this.apiUrl}/${this.entity}/${_id}`);
+  }
 }

@@ -10,10 +10,9 @@ import { ConfigService } from './config.service';
 export class ProductService extends BaseService<Product> {
 
   constructor(
-    public config: ConfigService,
     public http: HttpClient,
   ) {
-    super(config, http);
+    super(http);
     this.entity = 'products';
   }
 }

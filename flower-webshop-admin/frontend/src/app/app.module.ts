@@ -10,6 +10,8 @@ import { HomeComponent } from './page/home/home.component';
 import { OrdersComponent } from './page/orders/orders.component';
 import { ProductsComponent } from './page/products/products.component';
 import { CustomersComponent } from './page/customers/customers.component';
+import { NavigationComponent } from './widget/navigation/navigation.component';
+import { DataTableComponent } from './widget/data-table/data-table.component';
 
 
 @NgModule({
@@ -19,6 +21,8 @@ import { CustomersComponent } from './page/customers/customers.component';
     OrdersComponent,
     HomeComponent,
     CustomersComponent,
+    NavigationComponent,
+    DataTableComponent,
 
 
   ],

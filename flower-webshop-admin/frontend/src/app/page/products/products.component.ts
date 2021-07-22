@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Product } from 'src/app/model/product';
-import { ConfigService, ITableColumn } from 'src/app/service/config.service';
+import { ConfigService } from 'src/app/service/config.service';
 import { ProductService } from 'src/app/service/product.service';
 
 @Component({
@@ -11,7 +11,6 @@ import { ProductService } from 'src/app/service/product.service';
 })
 export class ProductsComponent implements OnInit {
 
-  tableColumns: ITableColumn[] = this.config.productColumns;
   list$: Observable<Product[]> = this.productService.getAll();
 
   constructor(
