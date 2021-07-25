@@ -16,6 +16,8 @@ import { FlowerEditComponent } from './edit/flower-edit/flower-edit.component';
 import { OrderEditComponent } from './edit/order-edit/order-edit.component';
 import { FooterComponent } from './footer/footer/footer.component';
 import { FlowersComponent } from './page/flowers/flowers.component';
+import { SorterPipe } from './pipe/sorter.pipe';
+import { FilterPipe } from './pipe/filter.pipe';
 
 
 @NgModule({
@@ -31,6 +33,8 @@ import { FlowersComponent } from './page/flowers/flowers.component';
     OrderEditComponent,
     FooterComponent,
     FlowersComponent,
+    SorterPipe,
+    FilterPipe
 
 
   ],
