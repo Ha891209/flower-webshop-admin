@@ -18,6 +18,7 @@ import { FooterComponent } from './footer/footer/footer.component';
 import { FlowersComponent } from './page/flowers/flowers.component';
 import { SorterPipe } from './pipe/sorter.pipe';
 import { FilterPipe } from './pipe/filter.pipe';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -34,7 +35,9 @@ import { FilterPipe } from './pipe/filter.pipe';
     FooterComponent,
     FlowersComponent,
     SorterPipe,
-    FilterPipe
+    FilterPipe,
+
+
 
 
   ],
@@ -43,6 +46,8 @@ import { FilterPipe } from './pipe/filter.pipe';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    ToastrModule
+
   ],
 
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

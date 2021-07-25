@@ -8,6 +8,9 @@ import { ConfigService } from './config.service';
   providedIn: 'root'
 })
 export class CustomerService extends BaseService<Customer> {
+  get(arg0: number) {
+    throw new Error('Method not implemented.');
+  }
 
   constructor(
     public config: ConfigService,
