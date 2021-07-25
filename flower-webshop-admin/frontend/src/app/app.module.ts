@@ -15,6 +15,7 @@ import { CustomerEditComponent } from './edit/customer-edit/customer-edit.compon
 import { FlowerEditComponent } from './edit/flower-edit/flower-edit.component';
 import { OrderEditComponent } from './edit/order-edit/order-edit.component';
 import { FooterComponent } from './footer/footer/footer.component';
+import { FlowersComponent } from './page/flowers/flowers.component';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { FooterComponent } from './footer/footer/footer.component';
     FlowerEditComponent,
     OrderEditComponent,
     FooterComponent,
+    FlowersComponent,
 
 
   ],
