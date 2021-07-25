@@ -1,9 +1,11 @@
+import { Address } from "./address";
+
 
 export class Customer {
-    _id: string = '';
+    id: string = '';
     firstName: string = '';
     lastName: string = '';
     email: string = '';
-    address: string = '';
-    active: boolean = true;
+    address: Address = new Address();
+    active: boolean = false;
 }

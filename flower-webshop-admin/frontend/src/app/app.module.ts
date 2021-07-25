@@ -8,21 +8,27 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './page/home/home.component';
 
 import { OrdersComponent } from './page/orders/orders.component';
-import { ProductsComponent } from './page/products/products.component';
 import { CustomersComponent } from './page/customers/customers.component';
 import { NavigationComponent } from './widget/navigation/navigation.component';
 import { DataTableComponent } from './widget/data-table/data-table.component';
+import { CustomerEditComponent } from './edit/customer-edit/customer-edit.component';
+import { FlowerEditComponent } from './edit/flower-edit/flower-edit.component';
+import { OrderEditComponent } from './edit/order-edit/order-edit.component';
+import { FooterComponent } from './footer/footer/footer.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProductsComponent,
     OrdersComponent,
     HomeComponent,
     CustomersComponent,
     NavigationComponent,
     DataTableComponent,
+    CustomerEditComponent,
+    FlowerEditComponent,
+    OrderEditComponent,
+    FooterComponent,
 
 
   ],

@@ -1,0 +1,16 @@
+.sorter-header{
+    cursor: pointer;
+}
+
+.sorter-header:active{
+    background-color: rgba($color: #f2f2f2, $alpha: 0.7);
+}
+
+.container-fluid{
+    min-width: 100vw;
+}
+
+
+.searchInput{
+    max-width: 10rem;
+}

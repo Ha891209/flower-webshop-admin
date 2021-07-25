@@ -1,4 +1,4 @@
-export class Product {
+export class Flower {
     _id: string = '';
     name: string = '';
     description: string = '';

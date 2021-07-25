@@ -1,0 +1,14 @@
+.table-scrollable{    
+    overflow-x: scroll;
+    @media screen and (max-width: 1200px) {
+        min-width: 100vw;
+      }
+}
+
+th {
+  user-select: none;
+}
+
+.sorter_th{
+  cursor: pointer;
+}

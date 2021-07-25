@@ -1,11 +1,11 @@
 import { Customer } from "./customer";
-import { Product } from "./product";
+import { Flower } from "./flower";
 
 
 export class Order {
-    _id: string = '';
+    id: string = '';
     customer: Customer = new Customer();
-    products: Product[] = [];
+    products: Flower[] = [];
     time: Date = new Date();
     note: string = '';
 }
