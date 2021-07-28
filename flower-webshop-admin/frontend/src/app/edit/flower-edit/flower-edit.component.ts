@@ -28,24 +28,26 @@ export class FlowerEditComponent implements OnInit {
       }
     );
     this.flowerService.get(parseInt(this.flowerId)).subscribe(
-      flower =>
-        this.flower = flower
+      flower => {
+      this.flower = flower
+    }
     );
   }
 
   setFlowerToDatabase(flower: Flower): void {
+    this.updated = true;
     if (parseInt(this.flowerId) === 0) {
-      this.flowerService.create(new Flower).subscribe(
+      this.flowerService.create(flower).subscribe(
         () => {
           this.updated = false;
           this.router.navigate(['flowers']);
         }
       );
     } else {
-      this.flowerService.update(new Flower).subscribe(
+      this.flowerService.update(flower).subscribe(
         () => {
           this.updated = false;
-          this.router.navigate(['flower']);
+          this.router.navigate(['flowers']);
         }
       );
     }
