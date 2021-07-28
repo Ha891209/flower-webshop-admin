@@ -13,7 +13,6 @@ export class FlowerService extends BaseService<Flower> {
     public config: ConfigService,
     public http: HttpClient
   ) {
-    super(config, http);
-    this.entityName = 'flowers';
+    super(config, http, 'flowers');
   }
 }

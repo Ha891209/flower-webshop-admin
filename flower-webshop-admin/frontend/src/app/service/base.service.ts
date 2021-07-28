@@ -1,37 +1,45 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { ConfigService } from './config.service';
-
+import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
-export class BaseService<T extends { id: string }>{
-
-  private readonly apiUrl: string = 'http://localhost:3000';
+export class BaseService<T extends { id: string }> {
   entityName: string = '';
   list$: BehaviorSubject<T[]> = new BehaviorSubject<T[]>([]);
 
   constructor(
     public config: ConfigService,
-    public http: HttpClient
-  ) { }
-
-  getAll(): Observable<T[]> {
-    return this.http.get<T[]>(`${this.apiUrl}/${this.entityName}`);
+    public http: HttpClient,
+    @Inject('entityName') entityName: string
+  ) {
+    this.entityName = entityName;
   }
 
-  getOne(_id: string): Observable<T> {
-    return this.http.get<T>(`${this.apiUrl}/${this.entityName}/${_id}`);
+  getAll(): void {
+    this.http.get<T[]>(`${this.config.apiUrl}/${this.entityName}`)
+      .subscribe(
+        list => this.list$.next(list),
+        err => console.error(err)
+      );
+  }
+
+  get(id: number): Observable<T> {
+    return Number(id) === 0 ? new Observable<T>() : this.http.get<T>(`${this.config.apiUrl}/${this.entityName}/${id}`);
   }
 
   create(entity: T): Observable<T> {
-    return this.http.post<T>(`${this.apiUrl}/${this.entityName}`, entity);
+    return this.http
+      .post<T>(`${this.config.apiUrl}/${this.entityName}`, entity)
+      .pipe(tap((e) => this.getAll()));
   }
 
   update(entity: T): Observable<T> {
-    return this.http.patch<T>(`${this.apiUrl}/${this.entityName}/${entity.id}`, entity);
+    return this.http
+      .patch<T>(`${this.config.apiUrl}/${this.entityName}/${entity.id}`, entity);
   }
 
   remove(entity: T | number): Observable<T> {

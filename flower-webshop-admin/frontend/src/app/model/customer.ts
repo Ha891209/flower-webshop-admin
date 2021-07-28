@@ -9,3 +9,4 @@ export class Customer {
     address: Address = new Address();
     active: boolean = false;
 }
+

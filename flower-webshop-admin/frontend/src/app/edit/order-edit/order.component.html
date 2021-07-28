@@ -1,0 +1,44 @@
+<div class="container edit-container py-4">
+    <div class="row">
+        <div *ngIf="order" class="col-6 offset-3 mt-5">
+            <form #orderForm="ngForm" (ngSubmit)="setOrderToDatabase(order)">
+                <div class="form-group">
+                    <label for="products">Termékek:</label>
+                    <input name="products" id="products" [(ngModel)]="order.products" type="text" class="form-control" required>
+                    <div [hidden]="orderForm.controls.products?.valid || orderForm.controls.products?.pristine"
+                        class="error-message">
+                        Hiányzó típus!
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="customerID">Megrendelő azonosító</label>
+                    <input name="customerID" id="customerID" [(ngModel)]="order.customerID" type="number" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="amount">Összeg:</label>
+                    <input name="amount" id="amount" [(ngModel)]="order.amount" type="number" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="status">Státusz:</label>
+                    <select class="form-control" name="status" id="status" [(ngModel)]="order.status"
+                        pattern="^(new|paid|shipped)$" required>
+                        <option value="new">New</option>
+                        <option value="shipped">Shipped</option>
+                        <option value="paid">Paid</option>
+                    </select>
+                    <div [hidden]="orderForm.controls.status?.valid || orderForm.controls.status?.pristine"
+                        class="error-message">
+                        Hiányzó státusz!
+                    </div>
+                </div>
+                <div class="d-grid col-8 mx-auto mt-3">
+                    <button [disabled]="orderForm.invalid || updated" type="submit" class="btn btn-primary btn-block">
+                        <i *ngIf="!updated" class="fa fa-floppy-o"></i>
+                        <i *ngIf="updated" class="fa fa-refresh"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

@@ -15,6 +15,7 @@ export class CustomersComponent implements OnInit {
   tableColumns: ITableCol[] = this.config.customerTableCols;
   list$: Observable<Customer[]> = this.customerService.list$;
   selectedToDelete: SelectedToDelete = this.config.selectedToDeleteCustomer;
+  filterKey: string = 'firstName';
 
 
   constructor(
@@ -36,4 +37,6 @@ export class CustomersComponent implements OnInit {
         }
       )
   }
+
+
 }

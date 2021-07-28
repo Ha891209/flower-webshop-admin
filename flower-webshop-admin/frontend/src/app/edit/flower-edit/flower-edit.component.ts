@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Flower } from 'src/app/model/flower';
+import { FlowerService } from 'src/app/service/flower.service';
 
 @Component({
   selector: 'app-flower-edit',
@@ -7,9 +10,45 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FlowerEditComponent implements OnInit {
 
-  constructor() { }
+  flower: Flower = new Flower();
+  flowerId: string = '';
+  updated: boolean = false;
+
+  constructor(
+    private flowerService: FlowerService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+  ) { }
 
   ngOnInit(): void {
+    this.activatedRoute.params.subscribe(
+      params => {
+        this.flowerId = params.id
+        console.log(params)
+      }
+    );
+    this.flowerService.get(parseInt(this.flowerId)).subscribe(
+      flower =>
+        this.flower = flower
+    );
+  }
+
+  setFlowerToDatabase(flower: Flower): void {
+    if (parseInt(this.flowerId) === 0) {
+      this.flowerService.create(new Flower).subscribe(
+        () => {
+          this.updated = false;
+          this.router.navigate(['flowers']);
+        }
+      );
+    } else {
+      this.flowerService.update(new Flower).subscribe(
+        () => {
+          this.updated = false;
+          this.router.navigate(['flower']);
+        }
+      );
+    }
   }
 
 }

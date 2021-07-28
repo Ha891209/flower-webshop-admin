@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Flower } from 'src/app/model/flower';
-import { ConfigService, ITableCol, SelectedToDelete } from 'src/app/service/config.service';
+import { ITableCol, SelectedToDelete, ConfigService } from 'src/app/service/config.service';
 import { FlowerService } from 'src/app/service/flower.service';
 
 @Component({
@@ -14,7 +14,8 @@ export class FlowersComponent implements OnInit {
 
   tableColumns: ITableCol[] = this.config.flowerTableCols;
   list$: Observable<Flower[]> = this.flowerService.list$;
-  selectedToDelete: SelectedToDelete = this.config.selectedToDeleteMovie;
+  selectedToDelete: SelectedToDelete = this.config.selectedToDeleteFlower;
+  filterKey: string = 'title';
 
 
   constructor(
@@ -27,8 +28,8 @@ export class FlowersComponent implements OnInit {
     this.flowerService.getAll();
   }
 
-  onClickDelete(movie: Flower): void {
-    this.flowerService.remove(movie)
+  onClickDelete(flower: Flower): void {
+    this.flowerService.remove(flower)
       .subscribe(
         () => {
           this.flowerService.getAll();

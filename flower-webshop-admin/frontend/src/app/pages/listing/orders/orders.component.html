@@ -1,0 +1,12 @@
+<div class=" orders-container container-fluid my-4 px-4">
+    <h1 class="mt-4">Megrendelések</h1>
+    <app-data-table
+      [tableColumns]="tableColumns"
+      [filterKey]="filterKey"
+      [selectedToDelete]="selectedToDelete"
+      [list$]="list$"
+      (deleteClick)="onClickDelete($event)">
+    </app-data-table>
+  </div>
+
+

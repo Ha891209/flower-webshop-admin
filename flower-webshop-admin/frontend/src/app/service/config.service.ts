@@ -18,7 +18,6 @@ export class ConfigService {
 
   apiUrl: string = 'http://localhost:3000';
 
-
   constructor() { }
 
   orderTableCols: ITableCol[] = [
@@ -31,9 +30,11 @@ export class ConfigService {
 
   flowerTableCols: ITableCol[] = [
     { key: 'id', text: '#', editable: false },
-    { key: 'title', text: 'Cím', editable: true },
+    { key: 'name', text: 'Név', editable: true },
+    { key: 'description', text: 'Leírás', editable: true },
     { key: 'active', text: 'Aktív', editable: true },
-    { key: 'price', text: 'Ár', editable: true }
+    { key: 'price', text: 'Ár', editable: true },
+
   ];
 
   customerTableCols: ITableCol[] = [
@@ -45,9 +46,9 @@ export class ConfigService {
     { key: 'active', text: 'Aktív', editable: true }
   ];
 
-  selectedToDeleteMovie: SelectedToDelete = {
-    key: 'title',
-    text: 'című filmet?'
+  selectedToDeleteFlower: SelectedToDelete = {
+    key: 'name',
+    text: 'nevű virágot?'
   }
 
   selectedToDeleteCustomer: SelectedToDelete = {
@@ -59,4 +60,9 @@ export class ConfigService {
     key: 'id',
     text: 'megrendelést?'
   }
+
+  topFlowerTableCols: ITableCol[] = [
+    { key: 'active', text: 'Aktív' },
+    { key: 'highlighted', text: 'Kiemelt' },
+  ]
 }

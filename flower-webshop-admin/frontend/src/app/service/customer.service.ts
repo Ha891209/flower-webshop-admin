@@ -8,15 +8,11 @@ import { ConfigService } from './config.service';
   providedIn: 'root'
 })
 export class CustomerService extends BaseService<Customer> {
-  get(arg0: number) {
-    throw new Error('Method not implemented.');
-  }
 
   constructor(
     public config: ConfigService,
-    public http: HttpClient,
+    public http: HttpClient
   ) {
-    super(config, http);
-    this.entityName = 'customers';
+    super(config, http, 'customers');
   }
 }

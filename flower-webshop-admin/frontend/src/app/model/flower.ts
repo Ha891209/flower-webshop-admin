@@ -4,4 +4,5 @@ export class Flower {
     description: string = '';
     price: number = 0;
     active: boolean = true;
+    image: string = '';
 }

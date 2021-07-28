@@ -1,0 +1,15 @@
+.info-block{
+    background-color: rgb(245, 143, 240);
+    margin: 3rem 0;
+    padding: 1rem;
+    text-align: center;
+    font-weight: 600;
+}
+p, h1, h2, h3{
+    user-select: none;
+}
+
+.sorter-header{
+    cursor: pointer;
+    background-color: rgba($color: #eb6ebb, $alpha: 0.7);
+}

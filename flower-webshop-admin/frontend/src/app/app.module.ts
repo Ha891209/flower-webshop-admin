@@ -1,60 +1,53 @@
-import { HttpClientModule } from '@angular/common/http';
-import { CUSTOM_ELEMENTS_SCHEMA, LOCALE_ID, NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './page/home/home.component';
-
-import { OrdersComponent } from './page/orders/orders.component';
-import { CustomersComponent } from './page/customers/customers.component';
 import { NavigationComponent } from './widget/navigation/navigation.component';
-import { DataTableComponent } from './widget/data-table/data-table.component';
-import { CustomerEditComponent } from './edit/customer-edit/customer-edit.component';
-import { FlowerEditComponent } from './edit/flower-edit/flower-edit.component';
-import { OrderEditComponent } from './edit/order-edit/order-edit.component';
-import { FooterComponent } from './footer/footer/footer.component';
-import { FlowersComponent } from './page/flowers/flowers.component';
+import { OrdersComponent } from './pages/listing/orders/orders.component';
+import { HomeComponent } from './pages/home/home.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { LoginComponent } from './pages/login/login.component';
+import { OrderEditComponent } from './edit/order-edit/order.component';
 import { SorterPipe } from './pipe/sorter.pipe';
+import { FooterComponent } from './footer/footer/footer.component';
+import { CustomersComponent } from './pages/listing/customers/customers.component';
+import { CustomerEditComponent } from './edit/customer-edit/customer-edit.component';
 import { FilterPipe } from './pipe/filter.pipe';
-import { ToastrModule } from 'ngx-toastr';
-
+import { DataTableComponent } from './common/data-table/data-table.component';
+import { FlowersComponent } from './pages/listing/flowers/flowers.component';
+import { FlowerEditComponent } from './edit/flower-edit/flower-edit.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    NavigationComponent,
     OrdersComponent,
     HomeComponent,
-    CustomersComponent,
-    NavigationComponent,
-    DataTableComponent,
-    CustomerEditComponent,
-    FlowerEditComponent,
+    NotFoundComponent,
+    LoginComponent,
     OrderEditComponent,
-    FooterComponent,
-    FlowersComponent,
     SorterPipe,
+    FooterComponent,
+    CustomersComponent,
+    CustomerEditComponent,
     FilterPipe,
-
-
-
-
+    DataTableComponent,
+    FlowerEditComponent,
+    FlowersComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule,
-    ToastrModule
-
+    FormsModule
   ],
 
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 
-  providers: [
-    { provide: LOCALE_ID, useValue: 'hu-HU' }
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

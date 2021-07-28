@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Order } from 'src/app/model/order';
-import { ConfigService, ITableCol, SelectedToDelete } from 'src/app/service/config.service';
+import { ITableCol, ConfigService, SelectedToDelete } from 'src/app/service/config.service';
 import { OrderService } from 'src/app/service/order.service';
 
 @Component({
@@ -15,6 +15,7 @@ export class OrdersComponent implements OnInit {
   tableColumns: ITableCol[] = this.config.orderTableCols;
   list$: Observable<Order[]> = this.orderService.list$;
   selectedToDelete: SelectedToDelete = this.config.selectedToDeleteOrder;
+  filterKey: string = 'id';
 
   constructor(
     private config: ConfigService,
@@ -28,11 +29,28 @@ export class OrdersComponent implements OnInit {
 
   onClickDelete(order: Order): void {
     this.orderService.remove(order)
-      .subscribe(
-        () => {
-          this.orderService.getAll();
-          this.router.navigate(['/orders']);
-        }
-      )
+    .subscribe(
+      () => {
+        this.orderService.getAll();
+        this.router.navigate(['/orders']);
+      }
+    )
   }
+
+  /* 
+  sorterKey: string = '';
+  sorterDirection: number = 1;
+
+
+
+  onSort(key: string): void {
+    if (key === this.sorterKey) {
+      this.sorterDirection *= -1;
+    } else {
+      this.sorterDirection = 1;
+    }
+
+    this.sorterKey = key;
+  } */
+
 }

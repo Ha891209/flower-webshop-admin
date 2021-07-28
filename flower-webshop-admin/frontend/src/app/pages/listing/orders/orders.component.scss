@@ -1,0 +1,13 @@
+.sorter-header{
+    cursor: pointer;
+}
+
+.orders-container {
+    min-height: calc(100vh - 152px);
+}
+
+.sorter-header:active{
+    background-color: rgba($color: #f2f2f2, $alpha: 0.7);
+}
+
+
