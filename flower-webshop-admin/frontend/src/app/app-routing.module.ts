@@ -9,6 +9,7 @@ import { FlowersComponent } from './pages/listing/flowers/flowers.component';
 import { OrdersComponent } from './pages/listing/orders/orders.component';
 import { LoginComponent } from './pages/login/login.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { TopoffersComponent } from './pages/topoffers/topoffers.component';
 
 const routes: Routes = [
   {
@@ -24,7 +25,7 @@ const routes: Routes = [
     component: FlowersComponent
   },
   {
-    path: 'flower/:id',
+    path: 'flowers/:id',
     component: FlowerEditComponent
   },
   {
@@ -42,6 +43,10 @@ const routes: Routes = [
   {
     path: 'customers/:id',
     component: CustomerEditComponent
+  },
+  {
+    path: 'topoffers',
+    component: TopoffersComponent
   },
   {
     path: '**',

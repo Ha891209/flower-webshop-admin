@@ -16,9 +16,10 @@ import { FooterComponent } from './footer/footer/footer.component';
 import { CustomersComponent } from './pages/listing/customers/customers.component';
 import { CustomerEditComponent } from './edit/customer-edit/customer-edit.component';
 import { FilterPipe } from './pipe/filter.pipe';
-import { DataTableComponent } from './common/data-table/data-table.component';
+import { DataTableComponent } from './widget/data-table/data-table.component';
 import { FlowersComponent } from './pages/listing/flowers/flowers.component';
 import { FlowerEditComponent } from './edit/flower-edit/flower-edit.component';
+import { TopoffersComponent } from './pages/topoffers/topoffers.component';
 
 @NgModule({
   declarations: [
@@ -34,9 +35,10 @@ import { FlowerEditComponent } from './edit/flower-edit/flower-edit.component';
     CustomersComponent,
     CustomerEditComponent,
     FilterPipe,
-    DataTableComponent,
     FlowerEditComponent,
-    FlowersComponent
+    FlowersComponent,
+    TopoffersComponent,
+    DataTableComponent
   ],
   imports: [
     BrowserModule,

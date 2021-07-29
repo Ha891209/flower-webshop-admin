@@ -5,4 +5,5 @@ export class Flower {
     price: number = 0;
     active: boolean = true;
     image: string = '';
+    highlighted: boolean = true;
 }
