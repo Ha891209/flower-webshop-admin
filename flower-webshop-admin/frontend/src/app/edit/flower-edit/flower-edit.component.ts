@@ -12,7 +12,8 @@ export class FlowerEditComponent implements OnInit {
 
   flower: Flower = new Flower();
   flowerId: string = '';
-  updated: boolean = false;
+  updating: boolean = false;
+  updated!: boolean;
 
   constructor(
     private flowerService: FlowerService,
@@ -28,9 +29,7 @@ export class FlowerEditComponent implements OnInit {
       }
     );
     this.flowerService.get(parseInt(this.flowerId)).subscribe(
-      flower => {
-      this.flower = flower
-    }
+      flower => this.flower = flower
     );
   }
 

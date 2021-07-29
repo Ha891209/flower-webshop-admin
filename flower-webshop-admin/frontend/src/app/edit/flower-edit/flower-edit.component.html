@@ -1,49 +1,56 @@
-<div class="container edit-container py-4">
-    <div class="row">
-        <div *ngIf="flower" class="col-6 offset-3 mt-5">
-            <form #flowerForm="ngForm" (ngSubmit)="setFlowerToDatabase(flower)">
-                <div class="form-group">
-                    <label for="title">Cím:</label>
-                    <input name="title" [(ngModel)]="flower.name" type="text" class="form-control" id="title" required
-                        autofocus>
-                    <div [hidden]="flowerForm.controls.title?.valid || flowerForm.controls.title?.pristine"
-                        class="error-message">
-                        Hiányzó cím!
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="description">Leírás:</label>
-                    <input name="description" id="description" [(ngModel)]="flower.description" type="text"
-                        class="form-control" required>
-                    <div [hidden]="flowerForm.controls.category?.valid || flowerForm.controls.description?.pristine"
-                        class="error-message">
-                        Hiányzó leírás!
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="price">Ár:</label>
-                    <input name="price" id="price" [(ngModel)]="flower.price" type="number" class="form-control"
+<div class="row">
+    <div *ngIf="flower" class="col-6 offset-3 mt-5">
+        <form #flowerForm="ngForm" (ngSubmit)="setFlowerToDatabase(flower)">
+
+            <div class="form-group mb-3">
+                <label for="_id">Termékazonosító:</label>
+                <input name="_id" [(ngModel)]="flower.id" type="text" class="form-control" id="_id" readonly>
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="name">Név:</label>
+                <input name="name" [(ngModel)]="flower.name" type="text" class="form-control" id="name" required>
+                <small [hidden]="flowerForm.controls.name?.valid || flowerForm.controls.name?.pristine"
+                    class="error-message">
+                    Hiányzó név!
+                </small>
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="description">Leírás:</label>
+                <textarea name="description" [(ngModel)]="flower.description" type="text" class="form-control"
+                    id="description" rows="5" required></textarea>
+                <small [hidden]="flowerForm.controls.description?.valid || flowerForm.controls.description?.pristine"
+                    class="error-message">
+                    Hiányzó leírás!
+                </small>
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="price">Ár:</label>
+                <div class="input-group">
+                    <input name="price" [(ngModel)]="flower.price" type="number" class="form-control" id="price" min="1"
                         required>
-                    <div [hidden]="flowerForm.controls.price?.valid || flowerForm.controls.price?.pristine"
-                        class="error-message">
-                        Hiányzó ár!
-                    </div>
+                    <div class="input-group-append"><span class="input-group-text">Ft</span></div>
                 </div>
-                <div class="form-check mb-3">
-                    <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" name="active" [(ngModel)]="flower.active">Aktív
-                        <span class="form-check-sign">
-                            <span class="check"></span>
-                        </span>
-                    </label>
-                </div>
-                <div class="d-grid col-8 mx-auto">
-                    <button [disabled]="flowerForm.invalid || updated" type="submit" class="btn btn-primary btn-block">
-                        <i *ngIf="!updated" class="fa fa-floppy-o"></i>
-                        <i *ngIf="updated" class="fa fa-refresh"></i>
-                    </button>
-                </div>
-            </form>
-        </div>
+                <small [hidden]="flowerForm.controls.price?.valid || flowerForm.controls.price?.pristine"
+                    class="error-message">
+                    Hiányzó ár!</small>
+            </div>
+
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="flexCheckDefault" name="active"
+                    [(ngModel)]="flower.active">
+                <label class="form-check-label" for="flexCheckDefault">Aktív</label>
+            </div>
+
+            <div class="d-grid col-8 mx-auto">
+                <button [disabled]="flowerForm.invalid || updated" type="submit" class="btn btn-primary btn-block">
+                    <i *ngIf="!updated" class="fa fa-floppy-o"></i>
+                    <i *ngIf="updated" class="fa fa-refresh"></i>
+                </button>
+            </div>
+
+        </form>
     </div>
 </div>
