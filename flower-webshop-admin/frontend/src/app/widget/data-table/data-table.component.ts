@@ -12,8 +12,13 @@ export class DataTableComponent<T extends { [propname: string]: any }> implement
   @Input() tableColumns: ITableCol[] = [];
   @Input() list$: Observable<T[]> | null = null;
   @Input() selectedToDelete!: SelectedToDelete;
+  @Input() filterKey: string = '';
   @Output() deleteClick: EventEmitter<any> = new EventEmitter();
+
   selectedToDeleteItem: any;
+  sorterKey: string = '';
+  sorterDirection: number = 1;
+  phrase: string = '';
 
   constructor(
     private config: ConfigService,
@@ -29,6 +34,20 @@ export class DataTableComponent<T extends { [propname: string]: any }> implement
 
   onClickDelete(): void {
     this.deleteClick.emit(this.selectedToDeleteItem);
+  }
+
+  onChangePhrase(event: Event): void {
+    this.phrase = (event.target as HTMLInputElement).value;
+  }
+
+  onSort(key: string): void {
+    if (key === this.sorterKey) {
+      this.sorterDirection *= -1;
+    } else {
+      this.sorterDirection = 1;
+    }
+
+    this.sorterKey = key;
   }
 
 }

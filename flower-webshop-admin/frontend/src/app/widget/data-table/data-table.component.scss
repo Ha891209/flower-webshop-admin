@@ -1,14 +1,16 @@
 .table-scrollable{    
     overflow-x: scroll;
+    min-height: calc(65vh);
     @media screen and (max-width: 1200px) {
         min-width: 100vw;
       }
 }
 
-th {
+.sorter-header {
+  cursor: pointer;
   user-select: none;
 }
 
-.sorter_th{
-  cursor: pointer;
-}
+.input{
+  min-width: 12rem;
+} 
