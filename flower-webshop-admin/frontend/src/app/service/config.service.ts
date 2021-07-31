@@ -23,7 +23,7 @@ export class ConfigService {
   orderTableCols: ITableCol[] = [
     { key: '_id', text: '#', editable: false },
     { key: 'products', text: 'Termékek', editable: true },
-    { key: '_customerID', text: 'Vásárló', editable: true },
+    { key: 'customerID', text: 'Vásárló', editable: true },
     { key: 'amount', text: 'Összeg', editable: true },
     { key: 'status', text: 'Státusz', editable: true }
   ];

@@ -15,7 +15,7 @@ export class OrdersComponent implements OnInit {
   tableColumns: ITableCol[] = this.config.orderTableCols;
   list$: Observable<Order[]> = this.orderService.list$;
   selectedToDelete: SelectedToDelete = this.config.selectedToDeleteOrder;
-  filterKey: string = 'id';
+  filterKey: string = '_id';
 
   constructor(
     private config: ConfigService,
@@ -29,12 +29,12 @@ export class OrdersComponent implements OnInit {
 
   onClickDelete(order: Order): void {
     this.orderService.remove(order)
-    .subscribe(
-      () => {
-        this.orderService.getAll();
-        this.router.navigate(['/orders']);
-      }
-    )
+      .subscribe(
+        () => {
+          this.orderService.getAll();
+          this.router.navigate(['/orders']);
+        }
+      )
   }
 
   /* 
