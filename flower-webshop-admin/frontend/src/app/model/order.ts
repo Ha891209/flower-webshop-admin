@@ -2,7 +2,7 @@ import { Customer } from "./customer";
 import { Flower } from "./flower";
 
 export class Order {
-    id: string = '';
+    _id: string = '';
     products: Flower[] = [];
     customerID: number = 0;
     amount: number = 0;

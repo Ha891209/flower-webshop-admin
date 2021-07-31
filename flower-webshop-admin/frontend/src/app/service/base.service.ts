@@ -7,7 +7,7 @@ import { tap } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class BaseService<T extends { id: string }> {
+export class BaseService<T extends { _id: string }> {
   entityName: string = '';
   list$: BehaviorSubject<T[]> = new BehaviorSubject<T[]>([]);
 
@@ -27,8 +27,8 @@ export class BaseService<T extends { id: string }> {
       );
   }
 
-  get(id: number): Observable<T> {
-    return Number(id) === 0 ? new Observable<T>() : this.http.get<T>(`${this.config.apiUrl}/${this.entityName}/${id}`);
+  get(_id: number): Observable<T> {
+    return Number(_id) === 0 ? new Observable<T>() : this.http.get<T>(`${this.config.apiUrl}/${this.entityName}/${_id}`);
   }
 
   create(entity: T): Observable<T> {
@@ -39,11 +39,11 @@ export class BaseService<T extends { id: string }> {
 
   update(entity: T): Observable<T> {
     return this.http
-      .patch<T>(`${this.config.apiUrl}/${this.entityName}/${entity.id}`, entity);
+      .patch<T>(`${this.config.apiUrl}/${this.entityName}/${entity._id}`, entity);
   }
 
   remove(entity: T | number): Observable<T> {
-    let entityId = typeof entity === 'number' ? entity : entity.id;
-    return this.http.delete<T>(`${this.config.apiUrl}/${this.entityName}/${entityId}`);
+    let entity_Id = typeof entity === 'number' ? entity : entity._id;
+    return this.http.delete<T>(`${this.config.apiUrl}/${this.entityName}/${entity_Id}`);
   }
 }

@@ -11,7 +11,7 @@ import { CustomerService } from 'src/app/service/customer.service';
 export class CustomerEditComponent implements OnInit {
 
   customer: Customer = new Customer();
-  customerId: string = '';
+  customer_Id: string = '';
   updating: boolean = false;
 
   constructor(
@@ -23,18 +23,18 @@ export class CustomerEditComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(
       params => {
-        this.customerId = params.id
+        this.customer_Id = params._id
         console.log(params)
       }
     );
-    this.customerService.get(parseInt(this.customerId)).subscribe(
+    this.customerService.get(parseInt(this.customer_Id)).subscribe(
       customer => this.customer = customer
     );
   }
 
   setCustomerToDatabase(customer: Customer): void {
     this.updating = true;
-    if (parseInt(this.customerId) === 0) {
+    if (parseInt(this.customer_Id) === 0) {
       this.customerService.create(customer).subscribe(
         () => {
           this.updating = false;

@@ -21,15 +21,15 @@ export class ConfigService {
   constructor() { }
 
   orderTableCols: ITableCol[] = [
-    { key: 'id', text: '#', editable: false },
+    { key: '_id', text: '#', editable: false },
     { key: 'products', text: 'Termékek', editable: true },
-    { key: 'customerID', text: 'Vásárló', editable: true },
+    { key: '_customerID', text: 'Vásárló', editable: true },
     { key: 'amount', text: 'Összeg', editable: true },
     { key: 'status', text: 'Státusz', editable: true }
   ];
 
   flowerTableCols: ITableCol[] = [
-    { key: 'id', text: '#', editable: false },
+    { key: '_id', text: '#', editable: false },
     { key: 'name', text: 'Név', editable: true },
     { key: 'description', text: 'Leírás', editable: true },
     { key: 'active', text: 'Aktív', editable: true },
@@ -38,7 +38,7 @@ export class ConfigService {
   ];
 
   customerTableCols: ITableCol[] = [
-    { key: 'id', text: '#', editable: false },
+    { key: '_id', text: '#', editable: false },
     { key: 'firstName', text: 'Keresztnév', editable: true },
     { key: 'lastName', text: 'Vezetéknév', editable: true },
     { key: 'email', text: 'Email', editable: true },
@@ -57,7 +57,7 @@ export class ConfigService {
   }
 
   selectedToDeleteOrder: SelectedToDelete = {
-    key: 'id',
+    key: '_id',
     text: 'megrendelést?'
   }
 

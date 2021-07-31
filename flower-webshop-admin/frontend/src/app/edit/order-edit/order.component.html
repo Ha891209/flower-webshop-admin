@@ -4,7 +4,8 @@
             <form #orderForm="ngForm" (ngSubmit)="setOrderToDatabase(order)">
                 <div class="form-group">
                     <label for="products">Termékek:</label>
-                    <input name="products" id="products" [(ngModel)]="order.products" type="text" class="form-control" required>
+                    <input name="products" id="products" [(ngModel)]="order.products" type="text" class="form-control"
+                        required>
                     <div [hidden]="orderForm.controls.products?.valid || orderForm.controls.products?.pristine"
                         class="error-message">
                         Hiányzó típus!
@@ -12,11 +13,13 @@
                 </div>
                 <div class="form-group">
                     <label for="customerID">Megrendelő azonosító</label>
-                    <input name="customerID" id="customerID" [(ngModel)]="order.customerID" type="number" class="form-control" required>
+                    <input name="customerID" _id="customerID" [(ngModel)]="order.customerID" type="number"
+                        class="form-control" required>
                 </div>
                 <div class="form-group">
                     <label for="amount">Összeg:</label>
-                    <input name="amount" id="amount" [(ngModel)]="order.amount" type="number" class="form-control" required>
+                    <input name="amount" id="amount" [(ngModel)]="order.amount" type="number" class="form-control"
+                        required>
                 </div>
                 <div class="form-group">
                     <label for="status">Státusz:</label>
@@ -41,4 +44,3 @@
         </div>
     </div>
 </div>
-
