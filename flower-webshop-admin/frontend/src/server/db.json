@@ -701,7 +701,7 @@
       "active": true
     },
     {
-      "__id": 51,
+      "_id": 51,
       "firstName": "Anikó",
       "lastName": "Kópis",
       "email": "ha891209@gmail.com",
@@ -717,7 +717,7 @@
   ],
   "flowers": [
     {
-      "__id": "1",
+      "_id": "1",
       "description": "With its feminine feel and European charm, this alluring glass cube is the perfect Mother's Day surprise! It's carefully hand-decorated and filled with a fresh bouquet of daisies and roses.",
       "imgURL": "https://assets.eflorist.com/assets/products/PHR_/T18M400A.jpg",
       "name": "Wildflower In Flight Bouquet",
@@ -725,7 +725,7 @@
       "active": true
     },
     {
-      "__id": "2",
+      "_id": "2",
       "description": "The shimmering, ir_idescent aqua blue glass of this stunning cylinder vase is the perfect partner for a fresh, fabulous bouquet of lavender roses, alstroemeria and tulips!",
       "imgURL": "https://img.teleflora.com/images/o_0/l_flowers:T19E300A,pg_6/w_368,h_460,cs_no_cmyk,c_pad/f_jpg,q_auto:eco,e_sharpen:200/flowers/T19E300A/Teleflora'sArtGlassGardenBouquet",
       "name": "Art Glass Garden Bouquet",
@@ -733,7 +733,7 @@
       "active": true
     },
     {
-      "__id": "3",
+      "_id": "3",
       "description": "A truly breathtaking tribute to your love, this romantic arrangement bursts with a dozen and a half red and white roses, nestled among delicate greens.",
       "imgURL": "https://img.teleflora.com/images/o_0/l_flowers:TRS10-1C,pg_6/w_368,h_460,cs_no_cmyk,c_pad/f_jpg,q_auto:eco,e_sharpen:200/flowers/TRS10-1C/YoursTrulyBouquetPM",
       "name": "Yours Truly Bouquet",
@@ -741,7 +741,7 @@
       "active": true
     },
     {
-      "__id": "4",
+      "_id": "4",
       "description": "Just fabulous! From its perky pink cube and perfect pink roses, to its textural greens and dramatic pink lilies, this chic bouquet is flora at its finest!",
       "imgURL": "https://img.teleflora.com/images/o_0/l_flowers:TLR09-1C,pg_6/w_368,h_460,cs_no_cmyk,c_pad/f_jpg,q_auto:eco,e_sharpen:200/flowers/TLR09-1C/Teleflora'sFabulousFloraBouquetPM",
       "name": "Fabulous Flora Bouquet",
@@ -749,7 +749,7 @@
       "active": true
     },
     {
-      "__id": "5",
+      "_id": "5",
       "description": "Timeless and touching, this serenely beautiful bouquet of peach and white blooms is perfectly presented in a classic mercury glass hurricane. Two gifts in one, it later transforms into a shimmering candleholder.",
       "imgURL": "https://img.teleflora.com/images/o_0/l_flowers:TLR08-1C,pg_6/w_800,h_1000,cs_no_cmyk,c_pad/f_jpg,q_auto:eco,e_sharpen:200/flowers/TLR08-1C/Teleflora'sEndlessLoveliesBouquetPM",
       "name": "Endless Lovelies Bouquet",
@@ -757,7 +757,7 @@
       "active": false
     },
     {
-      "__id": "6",
+      "_id": "6",
       "description": "A punch of sunset-inspired color, this bold, beautiful blend of hot pink roses and orange lilies in a classic glass vase will brighten any day!",
       "imgURL": "https://img.teleflora.com/images/o_0/l_flowers:TEV56-2B,pg_6/w_368,h_460,cs_no_cmyk,c_pad/f_jpg,q_auto:eco,e_sharpen:200/flowers/TEV56-2B/PunchOfColorBouquetDX",
       "name": "Punch Of Color Bouquet",
@@ -765,7 +765,7 @@
       "active": false
     },
     {
-      "__id": "7",
+      "_id": "7",
       "description": "Send that special someone on a trip to paradise, no plane tickets required! This magical mix of luxurious pink, yellow and green blooms bursts with color, texture and personality. It's a tropical treat they'll never forget!",
       "imgURL": "https://img.teleflora.com/images/o_0/l_flowers:TSD01-1A,pg_6/w_800,h_1000,cs_no_cmyk,c_pad/f_jpg,q_auto:eco,e_sharpen:200/flowers/TSD01-1A/PrettyParadiseBouquet",
       "name": "Pretty Paradise Bouquet",
@@ -773,7 +773,7 @@
       "active": true
     },
     {
-      "__id": "8",
+      "_id": "8",
       "description": "Pure joy! Two dozen wondrous white roses take center stage in this chic bouquet, delivered with stylish greens in a classic urn vase.",
       "imgURL": "https://img.teleflora.com/images/o_0/l_flowers:TRS11-1C,pg_6/w_368,h_460,cs_no_cmyk,c_pad/f_jpg,q_auto:eco,e_sharpen:200/flowers/TRS11-1C/JoyOfRosesBouquetPM",
       "name": "Joy Of Roses Bouquet",
@@ -781,7 +781,7 @@
       "active": true
     },
     {
-      "__id": "9",
+      "_id": "9",
       "description": "Luxuriate in the natural, intoxicating beauty of this chic arrangement. Inspired by a wild garden, this composition of whisper-peach roses, white lilies and moody purple hydrangea is beautifully presented in a modern ceramic planter.",
       "imgURL": "https://img.teleflora.com/images/o_0/l_flowers:TEV56-8C,pg_6/w_368,h_460,cs_no_cmyk,c_pad/f_jpg,q_auto:eco,e_sharpen:200/flowers/TEV56-8C/IntoxicatingBeautyBouquetPM",
       "name": "Intoxicating Beauty Bouquet",
