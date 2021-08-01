@@ -1,16 +1,29 @@
-<div class="row">
-  <div class="col-4 offset-4 mt-5">
-    <form (ngSubmit)="onLogin()">
-      <div class="form-group">
-        <label>Email</label>
-        <input class="form-control" name="email" [(ngModel)]="user.email" type="email">
-      </div>
-      <div class="form-group">
-        <label>Password</label>
-        <input class="form-control" name="password" [(ngModel)]="user.password" type="password">
-      </div>
-      <button type="submit" class="btn btn-primary col-12 mt-3">
-        <i class="fas fa-save"></i>
-      </button>
-    </form>
+<div class="container login-container py-4">
+  <div class="row">
+    <div class="col-md-4 offset-md-4">
+      <main class="form-signin text-center mx-4">
+        <button (click)="setPassword()" class="btn btn-success">Set Password</button>
+
+        <form (ngSubmit)="onLogin()">
+          <div class="form-floating">
+            <input name="email" [(ngModel)]="user.email" type="email" class="form-control" id="floatingInput"
+              placeholder="name@example.com">
+            <label for="floatingInput">Email cím</label>
+          </div>
+          <div class="form-floating mt-3">
+            <input name="password" [(ngModel)]="user.password" type="password" class="form-control "
+              id="floatingPassword" placeholder="Password">
+            <label for="floatingPassword">Jelszó</label>
+          </div>
+
+          <div class="checkbox mb-3">
+            <label>
+              <input type="checkbox" value="remember-me"> Emlékezz rám!
+            </label>
+          </div>
+          <button class="w-100 btn btn-lg btn-primary" type="submit">Bejelentkezés</button>
+        </form>
+      </main>
+    </div>
   </div>
+</div>

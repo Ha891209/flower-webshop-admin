@@ -10,17 +10,15 @@ import { ConfigService } from './config.service';
   providedIn: 'root'
 })
 export class AuthService {
-
-
-  currentUserSubject$: BehaviorSubject<User | null> =
-    new BehaviorSubject<User | null>(null);
+  currentUserSubject$: BehaviorSubject<User | null> = new BehaviorSubject<User | null>(null);
   lastToken: string = '';
-  loginUrl: string = `${this.config.apiUrl}login`;
+  loginUrl: string = `${this.config.apiUrl}/login`;
+
 
   constructor(
     private config: ConfigService,
     private http: HttpClient,
-    private router: Router,
+    private router: Router
   ) {
     if (localStorage.currentUser) {
       const user: User = JSON.parse(localStorage.currentUser);
@@ -44,7 +42,7 @@ export class AuthService {
         }
         return null;
       })
-    );
+    )
   }
 
   logout(): void {

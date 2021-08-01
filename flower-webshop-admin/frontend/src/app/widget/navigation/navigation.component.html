@@ -27,8 +27,11 @@
                             <a class="nav-link" routerLink="topoffers">Kiemelt ajánlatok</a>
                         </li>
                     </ul>
-                    <div class=" ml-auto float-right mr-3">
-                        <a class="btn btn-outline-success" routerLink="login">Bejelentkezés</a>
+                    <div *ngIf="!(user$ | async)" class=" ml-auto float-right mr-3">
+                        <a class="btn btn-outline-info" routerLink="login">Bejelentkezés</a>
+                    </div>
+                    <div *ngIf="(user$ | async)" class=" ml-auto float-right mr-3">
+                        <a class="btn btn-outline-secondary" (click)="onLogout()">Kijelentkezés</a>
                     </div>
                 </div>
             </nav>
