@@ -73,7 +73,8 @@ const routes: Routes = [
   },
   {
     path: 'topoffers',
-    component: TopoffersComponent
+    component: TopoffersComponent,
+    canActivate: [AuthGuardService]
   },
   {
     path: 'forbidden',

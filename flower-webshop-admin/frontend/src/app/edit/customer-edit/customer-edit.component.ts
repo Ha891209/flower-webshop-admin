@@ -27,7 +27,7 @@ export class CustomerEditComponent implements OnInit {
         console.log(params)
       }
     );
-    this.customerService.get(parseInt(this.customer_Id)).subscribe(
+    this.customerService.get(this.customer_Id).subscribe(
       customer => this.customer = customer
     );
   }

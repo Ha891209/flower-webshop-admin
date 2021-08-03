@@ -28,7 +28,7 @@ export class FlowerEditComponent implements OnInit {
         console.log(params)
       }
     );
-    this.flowerService.get(parseInt(this.flower_Id)).subscribe(
+    this.flowerService.get(this.flower_Id).subscribe(
       flower => this.flower = flower
     );
   }

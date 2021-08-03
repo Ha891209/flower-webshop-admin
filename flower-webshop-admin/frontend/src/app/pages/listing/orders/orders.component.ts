@@ -37,20 +37,4 @@ export class OrdersComponent implements OnInit {
       )
   }
 
-  /* 
-  sorterKey: string = '';
-  sorterDirection: number = 1;
-
-
-
-  onSort(key: string): void {
-    if (key === this.sorterKey) {
-      this.sorterDirection *= -1;
-    } else {
-      this.sorterDirection = 1;
-    }
-
-    this.sorterKey = key;
-  } */
-
 }

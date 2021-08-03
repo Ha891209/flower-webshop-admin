@@ -27,7 +27,7 @@ export class OrderEditComponent implements OnInit {
         console.log(params)
       }
     );
-    this.orderService.get(parseInt(this.order_Id)).subscribe(
+    this.orderService.get(this.order_Id).subscribe(
       order => {
         this.order = order
       }
