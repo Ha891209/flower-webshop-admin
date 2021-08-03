@@ -1075,18 +1075,22 @@
   ],
   "users": [
     {
-      "_id": "fasfdasfasdffff541515",
+      "_id": "1",
       "firstName": "Joe",
       "lastName": "Firpo",
       "email": "jf@gmail.com",
-      "address": {
-        "country": "USA",
-        "state": "CA",
-        "city": "LA",
-        "street": "Sunset Avenue 33."
-      },
       "active": true,
-      "password": "$2a$10$gM4bsxl5NDA6O3X330UmDOWZWCixRWFR36gNg5yLXf5c6cO0FGq9e"
+      "password": "$2a$10$gM4bsxl5NDA6O3X330UmDOWZWCixRWFR36gNg5yLXf5c6cO0FGq9e",
+      "role": 1
+    },
+    {
+      "_id": "2",
+      "firstName": "Damian",
+      "lastName": "Shambroke",
+      "email": "dshambroke0@spotify.com",
+      "active": true,
+      "password": "$2a$10$NcJm8M24sNf8V1RIkScx2u/ei03yjpDFV0H0y1jgXOpacvWcjl0By",
+      "role": 2
     }
   ]
 }

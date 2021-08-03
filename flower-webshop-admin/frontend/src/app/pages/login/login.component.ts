@@ -34,9 +34,10 @@ export class LoginComponent implements OnInit {
 
   setPassword(): void {
     this.userService.update({
-      _id: '1',
+      _id: '2',
       email: 'dshambroke0@spotify.com',
-      password: 'test'
+      password: 'test',
+      role: 2
     })
       .subscribe(resp => console.log(resp));
   }

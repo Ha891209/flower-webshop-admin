@@ -20,6 +20,7 @@ import { DataTableComponent } from './widget/data-table/data-table.component';
 import { FlowersComponent } from './pages/listing/flowers/flowers.component';
 import { FlowerEditComponent } from './edit/flower-edit/flower-edit.component';
 import { TopoffersComponent } from './pages/topoffers/topoffers.component';
+import { ForbiddenComponent } from './pages/forbidden/forbidden.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { TopoffersComponent } from './pages/topoffers/topoffers.component';
     FlowerEditComponent,
     FlowersComponent,
     TopoffersComponent,
-    DataTableComponent
+    DataTableComponent,
+    ForbiddenComponent
   ],
   imports: [
     BrowserModule,

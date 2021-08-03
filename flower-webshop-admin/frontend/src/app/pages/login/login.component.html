@@ -5,6 +5,7 @@
         <button (click)="setPassword()" class="btn btn-success">Set Password</button>
 
         <form (ngSubmit)="onLogin()">
+
           <div class="form-floating">
             <input name="email" [(ngModel)]="user.email" type="email" class="form-control" id="floatingInput"
               placeholder="name@example.com">
