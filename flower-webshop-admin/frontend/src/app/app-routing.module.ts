@@ -74,7 +74,7 @@ const routes: Routes = [
   {
     path: 'topoffers',
     component: TopoffersComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService, RoleGuardService]
   },
   {
     path: 'forbidden',

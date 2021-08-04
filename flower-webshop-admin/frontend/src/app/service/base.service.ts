@@ -21,7 +21,7 @@ export class BaseService<T extends { _id: string }> {
 
   getAll(): void {
     const user = localStorage.getItem('currentUser');
-    this.http.get<T[]>(`${this.config.apiUrl}${this.entityName}`, {
+    this.http.get<T[]>(`${this.config.apiUrl}/${this.entityName}`, {
       headers: {
         'Authorization': `Bearer ${user ? JSON.parse(user).accessToken : ''}`
       }
@@ -34,7 +34,7 @@ export class BaseService<T extends { _id: string }> {
 
   get(id: string): Observable<T> {
     const user = localStorage.getItem('currentUser');
-    return id === '0' ? new Observable<T>() : this.http.get<T>(`${this.config.apiUrl}${this.entityName}/${id}`, {
+    return id === '0' ? new Observable<T>() : this.http.get<T>(`${this.config.apiUrl}/${this.entityName}/${id}`, {
       headers: {
         'Authorization': `Bearer ${user ? JSON.parse(user).accessToken : ''}`
       }
@@ -44,7 +44,7 @@ export class BaseService<T extends { _id: string }> {
   create(entity: T): Observable<T> {
     const user = localStorage.getItem('currentUser');
     return this.http
-      .post<T>(`${this.config.apiUrl}${this.entityName}`, entity, {
+      .post<T>(`${this.config.apiUrl}/${this.entityName}`, entity, {
         headers: {
           'Authorization': `Bearer ${user ? JSON.parse(user).accessToken : ''}`
         }
@@ -55,7 +55,7 @@ export class BaseService<T extends { _id: string }> {
   update(entity: T): Observable<T> {
     const user = localStorage.getItem('currentUser');
     return this.http
-      .patch<T>(`${this.config.apiUrl}${this.entityName}/${entity._id}`, entity, {
+      .patch<T>(`${this.config.apiUrl}/${this.entityName}/${entity._id}`, entity, {
         headers: {
           'Authorization': `Bearer ${user ? JSON.parse(user).accessToken : ''}`
         }
@@ -65,7 +65,7 @@ export class BaseService<T extends { _id: string }> {
   remove(entity: T | string): Observable<T> {
     const user = localStorage.getItem('currentUser');
     let entityId = typeof entity === 'string' ? entity : entity._id;
-    return this.http.delete<T>(`${this.config.apiUrl}${this.entityName}/${entityId}`, {
+    return this.http.delete<T>(`${this.config.apiUrl}/${this.entityName}/${entityId}`, {
       headers: {
         'Authorization': `Bearer ${user ? JSON.parse(user).accessToken : ''}`
       }
