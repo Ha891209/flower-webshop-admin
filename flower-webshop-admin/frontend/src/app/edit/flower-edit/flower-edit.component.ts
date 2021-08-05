@@ -11,7 +11,7 @@ import { FlowerService } from 'src/app/service/flower.service';
 export class FlowerEditComponent implements OnInit {
 
   flower: Flower = new Flower();
-  flower_Id: string = '';
+  flowerId: string = '';
   updating: boolean = false;
   updated!: boolean;
 
@@ -24,18 +24,18 @@ export class FlowerEditComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(
       params => {
-        this.flower_Id = params._id
+        this.flowerId = params.id
         console.log(params)
       }
     );
-    this.flowerService.get(this.flower_Id).subscribe(
+    this.flowerService.get(this.flowerId).subscribe(
       flower => this.flower = flower
     );
   }
 
   setFlowerToDatabase(flower: Flower): void {
     this.updated = true;
-    if (parseInt(this.flower_Id) === 0) {
+    if (parseInt(this.flowerId) === 0) {
       this.flowerService.create(flower).subscribe(
         () => {
           this.updated = false;

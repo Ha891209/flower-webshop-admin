@@ -11,7 +11,7 @@ import { OrderService } from 'src/app/service/order.service';
 export class OrderEditComponent implements OnInit {
 
   order: Order = new Order();
-  order_Id: string = '';
+  orderId: string = '';
   updated: boolean = false;
 
   constructor(
@@ -23,11 +23,11 @@ export class OrderEditComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(
       params => {
-        this.order_Id = params._id
+        this.orderId = params.id
         console.log(params)
       }
     );
-    this.orderService.get(this.order_Id).subscribe(
+    this.orderService.get(this.orderId).subscribe(
       order => {
         this.order = order
       }
@@ -36,7 +36,7 @@ export class OrderEditComponent implements OnInit {
 
   setOrderToDatabase(order: Order): void {
     this.updated = true;
-    if (parseInt(this.order_Id) === 0) {
+    if (parseInt(this.orderId) === 0) {
       this.orderService.create(order).subscribe(
         () => {
           this.updated = false;

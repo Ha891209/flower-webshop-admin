@@ -25,7 +25,7 @@ export class DataTableComponent<T extends { [propname: string]: any }> implement
   ) { }
 
   ngOnInit(): void {
-    console.log(this.list$)
+
   }
 
   selectedItemToDelete(row: any): void {
