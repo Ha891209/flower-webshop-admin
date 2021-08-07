@@ -22,13 +22,13 @@ mongoose
         useNewUrlParser: true,
         useUnifiedTopology: true
     })
-    .then( () => logger.info('MongoDB connection has been established successfully.'))
-    .catch( err => {
+    .then(() => logger.info('MongoDB connection has been established successfully.'))
+    .catch(err => {
         logger.error(err);
         process.exit();
     });
 
-app.use(morgan('combined', {stream: logger.stream}));
+app.use(morgan('combined', { stream: logger.stream }));
 app.use(express.static('public'));
 app.use(bodyParser.json());
 
@@ -39,9 +39,10 @@ app.post('/logout', authHandler.logout);
 
 app.use('/person', authenticateJwt, require('./controllers/person/person.routes'));
 app.use('/post', authenticateJwt, adminOnly, require('./controllers/post/post.routes'));
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use('/orders', authenticateJwt, adminOnly, require('./controllers/orders/order.routes'));
+pp.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
-app.use( (err, req, res, next) => {
+app.use((err, req, res, next) => {
     res.status(err.statusCode);
     res.json({
         hasError: true,

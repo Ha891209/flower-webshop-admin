@@ -8,7 +8,7 @@ const AddressSchema = mongoose.Schema({
     street: String,
     houseNumber: Number
 }, {
-    timeStamps: true
+    timestamps: true
 });
 
 AddressSchema.plugin(idValidator);

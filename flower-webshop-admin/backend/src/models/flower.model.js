@@ -18,7 +18,7 @@ const FlowerSchema = mongoose.Schema({
     price: Number,
     image: String,
 }, {
-    timeStamps: true
+    timestamps: true
 });
 
 FlowerSchema.plugin(idValidator);

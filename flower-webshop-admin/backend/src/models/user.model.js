@@ -15,8 +15,8 @@ const UserSchema = mongoose.Schema({
     accessToken: String,
     role: Number
 }, {
-    timeStamps: true
+    timestamps: true
 });
 
-module.exports = mongoose.model('Customer', CustomerSchema);
+module.exports = mongoose.model('User', UserSchema);
 

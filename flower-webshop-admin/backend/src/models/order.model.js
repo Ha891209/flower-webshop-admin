@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const OrderSchema = mongoose.Schema({
-    movie: {
+    flower: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Flower',
     },
@@ -9,7 +9,7 @@ const OrderSchema = mongoose.Schema({
     amount: Number,
     status: String
 }, {
-    timeStamps: true
+    timestamps: true
 });
 
 module.exports = mongoose.model('Order', OrderSchema);
