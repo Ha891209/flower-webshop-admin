@@ -2,7 +2,6 @@ const express = require('express');
 const config = require('config');
 const logger = require('./config/logger');
 const app = express();
-const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const swaggerUi = require('swagger-ui-express');
 const YAML = require('yamljs');
@@ -29,18 +28,17 @@ mongoose
     });
 
 app.use(morgan('combined', { stream: logger.stream }));
-app.use(express.static('public'));
-app.use(bodyParser.json());
+app.use(express.json());
 
 // Router.
 app.post('/login', authHandler.login);
 app.post('/refresh', authHandler.refresh);
 app.post('/logout', authHandler.logout);
 
-app.use('/person', authenticateJwt, require('./controllers/person/person.routes'));
-app.use('/post', authenticateJwt, adminOnly, require('./controllers/post/post.routes'));
 app.use('/orders', authenticateJwt, adminOnly, require('./controllers/orders/order.routes'));
-pp.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use('/customers', authenticateJwt, adminOnly, require('./controllers/customers/customers.routes'));
+app.use('/flowers', authenticateJwt, adminOnly, require('./controllers/flowers/flowers.routes'));
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use((err, req, res, next) => {
     res.status(err.statusCode);

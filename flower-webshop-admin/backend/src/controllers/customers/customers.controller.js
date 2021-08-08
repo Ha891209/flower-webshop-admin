@@ -1,6 +1,6 @@
 const createError = require('http-errors');
 
-const customerService = require('./customer.service');
+const customerService = require('../customers/customers.service');
 const addressService = require('../address/address.service');
 const orderService = require('../orders/order.service');
 
