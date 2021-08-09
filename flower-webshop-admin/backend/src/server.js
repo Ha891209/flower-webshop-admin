@@ -1,36 +1,38 @@
-const config = require('config');
-
 const express = require('express');
-const cors = require('../config/cors');
-const morgan = require('morgan');
-const mongoose = require('mongoose');
-
+const config = require('config');
 const logger = require('./config/logger');
-
 const app = express();
+const bodyParser = require('body-parser');
+const morgan = require('morgan');
+const swaggerUi = require('swagger-ui-express');
+const YAML = require('yamljs');
+const mongoose = require('mongoose');
+mongoose.Promise = global.Promise;
+const fsp = require('fs').promises;
 
 // Authenctication.
-const authHandler = require('./auth/authHandler');
 const authenticateJwt = require('./auth/authenticate');
+const adminOnly = require('./auth/adminOnly');
+const authHandler = require('./auth/authHandler');
 
-mongoose.Promise = global.Promise;
+const swaggerDocument = YAML.load('./docs/swager.yaml');
 
-// Connect to MongoDB database
-(async () => {
-    try {
-        const { host, user, password } = config.get('database');
-        const connectionString = `mongodb+srv://${user}:${password}@${host}`;
-        await mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
-        logger.info('MongoDB connection has been established successfully.');
-    } catch (error) {
-        logger.error(error.message);
+const { user, password, host } = config.get('database');
+mongoose
+    .connect(`mongodb://${host}`, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    })
+    .then(() => logger.info('MongoDB connection has been established successfully.'))
+    .catch(err => {
+        logger.error(err);
         process.exit();
-    }
-})();
+    });
+
 
 app.use(morgan('combined', { stream: logger.stream }));
-app.use(express.json());
-app.use(cors());
+app.use(express.static('public'));
+app.use(bodyParser.json());
 
 // Router.
 app.post('/login', authHandler.login);
@@ -40,6 +42,8 @@ app.post('/logout', authHandler.logout);
 app.use('/orders', authenticateJwt, require('./controllers/orders/order.routes'));
 app.use('/customers', authenticateJwt, require('./controllers/customers/customers.routes'));
 app.use('/flowers', authenticateJwt, require('./controllers/flowers/flowers.routes'));
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
 
 
 app.use((err, _req, res, _next) => {
