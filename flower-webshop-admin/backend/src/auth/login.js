@@ -2,35 +2,32 @@ const jwt = require('jsonwebtoken');
 
 const Users = [
     {
-        username: 'admin',
-        password: 'admin_pw',
-        role: 'admin'
+        email: 'tesztelek@gmail.com',
+        password: 'test',
+        role: '2'
     },
     {
-        username: 'user',
-        password: 'user_pw',
-        role: 'user'
+        email: 'user@gmail.com',
+        password: 'test',
+        role: '1'
     }
 ];
 
 module.exports = (req, res) => {
-    const { username, password } = req.body;
+    const { email, password } = req.body;
 
-    const user = Users.find( 
-        u => u.username === username && u.password === password 
-    );
-
+    const user = Users.find(u => u.email === email && u.password === password);
     if (user) {
         const accessToken = jwt.sign({
-            username: user.username,
+            email: user.email,
             role: user.role
         }, process.env.ACCESS_TOKEN_SECRET);
 
         res.json({
+            user,
             accessToken
         });
     } else {
-        res.send('Username or password incorrect.');
+        res.send('email or password incorrect.');
     }
-
 };

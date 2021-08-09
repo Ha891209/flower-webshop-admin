@@ -1,13 +1,13 @@
 const express = require('express');
 const createError = require('http-errors');
 
-const flowwerService = require('./flowers.service');
+const flowerService = require('./flowers.service');
 
 //Create
 
 exports.create = (req, res, next) => {
     const { name, description, active, highlighted, price, image } = req.body;
-    if (!title /* || !category || !rating */) {
+    if (!title) {
         return next(
             new createError.BadRequest('Missing properties!')
         );
@@ -41,7 +41,7 @@ exports.findOne = (req, res, next) => {
     return flowerService.findOne(req.params.id)
         .then(flower => {
             if (!flower) {
-                return next(new createError.NotFound("Movie is not found!"));
+                return next(new createError.NotFound("Flower is not found!"));
             }
             res.json(flower);
         })
