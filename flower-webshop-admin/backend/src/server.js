@@ -1,51 +1,55 @@
-const express = require('express');
 const config = require('config');
-const logger = require('./config/logger');
-const app = express();
+
+const express = require('express');
+const cors = require('../config/cors');
 const morgan = require('morgan');
-const swaggerUi = require('swagger-ui-express');
-const YAML = require('yamljs');
 const mongoose = require('mongoose');
-mongoose.Promise = global.Promise;
+
+const logger = require('./config/logger');
+
+const app = express();
 
 // Authenctication.
-const authenticateJwt = require('./auth/authenticate');
-const adminOnly = require('./auth/adminOnly');
 const authHandler = require('./auth/authHandler');
+const authenticateJwt = require('./auth/authenticate');
 
-const swaggerDocument = YAML.load('./docs/swager.yaml');
+mongoose.Promise = global.Promise;
 
-const { username, password, host } = config.get('database');
-mongoose
-    .connect(`mongodb://${host}`, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true
-    })
-    .then(() => logger.info('MongoDB connection has been established successfully.'))
-    .catch(err => {
-        logger.error(err);
+// Connect to MongoDB database
+(async () => {
+    try {
+        const { host, user, password } = config.get('database');
+        const connectionString = `mongodb+srv://${user}:${password}@${host}`;
+        await mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
+        logger.info('MongoDB connection has been established successfully.');
+    } catch (error) {
+        logger.error(error.message);
         process.exit();
-    });
+    }
+})();
 
 app.use(morgan('combined', { stream: logger.stream }));
 app.use(express.json());
+app.use(cors());
 
 // Router.
 app.post('/login', authHandler.login);
 app.post('/refresh', authHandler.refresh);
 app.post('/logout', authHandler.logout);
 
-app.use('/orders', authenticateJwt, adminOnly, require('./controllers/orders/order.routes'));
-app.use('/customers', authenticateJwt, adminOnly, require('./controllers/customers/customers.routes'));
-app.use('/flowers', authenticateJwt, adminOnly, require('./controllers/flowers/flowers.routes'));
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use('/orders', authenticateJwt, require('./controllers/orders/order.routes'));
+app.use('/customers', authenticateJwt, require('./controllers/customers/customers.routes'));
+app.use('/flowers', authenticateJwt, require('./controllers/flowers/flowers.routes'));
 
-app.use((err, req, res, next) => {
-    res.status(err.statusCode);
-    res.json({
-        hasError: true,
-        message: err.message
-    });
+
+app.use((err, _req, res, _next) => {
+    if (!err.statusCode) {
+        res.status(500);
+    } else {
+        res.status(err.statusCode);
+    }
+    logger.error(err.message);
+    res.send(err.message);
 });
 
 module.exports = app;

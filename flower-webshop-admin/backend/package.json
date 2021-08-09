@@ -5,9 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "start": "node src/index.js",
-    "test": "jest",
-    "docker:build": "docker build -t nodejs-api-fejlesztes:latest .",
-    "docker-compose:up": "docker-compose up"
+    "test": "jest"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
