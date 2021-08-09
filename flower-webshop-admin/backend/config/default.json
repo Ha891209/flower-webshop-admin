@@ -1,7 +1,7 @@
 {
     "database": {
         "username": "dbUser",
-        "password": "a5wh61d5kj8Jtewl",
-        "host": "mongo:27017/Anniesflowerwebsop?retryWrites=true&w=majority"
+        "password": "gwxdgm7CtQvmoLAQ",
+        "host": "cluster0.e8kl9.mongodb.net/Anniesflowerwebsop?retryWrites=true&w=majority"
     }
 }

@@ -2,7 +2,7 @@ const createError = require('http-errors');
 const orderService = require('./order.service');
 const flowerService = require('../flowers/flowers.service');
 
-cexports.findAll = (req, res, next) => {
+exports.findAll = (req, res, next) => {
     return orderService.findAll()
         .then(orders => {
             res.json(orders);
