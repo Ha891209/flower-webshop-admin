@@ -1,6 +1,6 @@
 {
     "database": {
-        "username": "dbUser",
+        "user": "NodeUser",
         "password": "gwxdgm7CtQvmoLAQ",
         "host": "cluster0.e8kl9.mongodb.net/Anniesflowerwebsop?retryWrites=true&w=majority"
     }
