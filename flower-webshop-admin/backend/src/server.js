@@ -17,9 +17,10 @@ const authHandler = require('./auth/authHandler');
 
 const swaggerDocument = YAML.load('./docs/swager.yaml');
 
-const { user, password, host } = config.get('database');
+const { databasename, host } = config.get('database');
 mongoose
-    .connect(`mongodb+srv://${user}:${password}@${host}`, {
+    .connect(`mongodb://${host}/${databasename}`, {
+        //.connect(`mongodb://${host}`, {
         useNewUrlParser: true,
         useUnifiedTopology: true
     })

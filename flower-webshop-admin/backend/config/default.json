@@ -1,7 +1,6 @@
 {
     "database": {
-        "user": "NodeUser",
-        "password": "gwxdgm7CtQvmoLAQ",
-        "host": "cluster0.e8kl9.mongodb.net/Anniesflowerwebsop?retryWrites=true&w=majority"
+        "databasename": "AnniesFlower",
+        "host": "localhost:27017"
     }
 }
