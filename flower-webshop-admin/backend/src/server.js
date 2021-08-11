@@ -32,21 +32,20 @@ mongoose
 
 app.use(morgan('combined', { stream: logger.stream }));
 app.use(express.static('public'));
-app.use(bodyParser.json());
+app.use(express.json());
 
 // Router.
 app.post('/login', authHandler.login);
-app.post('/refresh', authHandler.refresh);
-app.post('/logout', authHandler.logout);
 
 app.use('/orders', authenticateJwt, require('./controllers/orders/order.routes'));
 app.use('/customers', authenticateJwt, require('./controllers/customers/customers.routes'));
 app.use('/flowers', authenticateJwt, require('./controllers/flowers/flowers.routes'));
+app.use('/users', authenticateJwt, require('./controllers/users/users.routes'));
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 
 
-app.use((err, _req, res, _next) => {
+app.use((err, req, res, next) => {
     if (!err.statusCode) {
         res.status(500);
     } else {

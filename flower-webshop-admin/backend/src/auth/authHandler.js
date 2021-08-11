@@ -1,94 +1,40 @@
+const createError = require('http-errors');
 const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
 
-// Biztonságosabb megoldás, az adatbázis használata.
-// Példa: https://www.npmjs.com/package/mongoose-bcrypt
+const userService = require('../controllers/users/users.service');
 
-const Users = [
-    {
-        username: 'admin',
-        password: 'admin_pw',
-        role: 'admin'
-    },
-    {
-        username: 'user',
-        password: 'user_pw',
-        role: 'user'
-    }
-];
+const login = async (req, res, next) => {
+    const { email, password } = req.body;
 
-const refreshTokens = [];
-
-module.exports.login = (req, res) => {
-    const { username, password } = req.body;
-
-    const user = Users.find(
-        u => u.username === username && u.password === password
-    );
-
-    if (user) {
-        const accessToken = jwt.sign({
-            username: user.username,
-            role: user.role
-        }, process.env.ACCESS_TOKEN_SECRET, {
-            expiresIn: process.env.TOKEN_EXPIRY
-        });
-
-        const refreshToken = jwt.sign({
-            username: user.username,
-            role: user.role
-        }, process.env.REFRESH_TOKEN_SECRET);
-        refreshTokens.push(refreshToken);
-
-        res.json({
-            accessToken,
-            refreshToken
-        });
-    } else {
-        res.send('Username or password incorrect.');
+    if (!email || !password) {
+        return next(new createError.BadRequest('Missing properties!'));
     }
 
-};
+    const user = await userService.findByEmail(email);
 
-
-module.exports.refresh = (req, res, next) => {
-    const { token } = req.body;
-
-    if (!token) {
-        return res.sendStatus(401);
+    if (!user) {
+        return next(new createError.BadRequest('Hibás email vagy jelszó!'));
     }
 
-    if (!refreshTokens.includes(token)) {
-        console.log(refreshTokens, token);
-        return res.sendStatus(403);
-    }
-
-    jwt.verify(token, process.env.REFRESH_TOKEN_SECRET, (err, user) => {
+    bcrypt.compare(password, user.password, (err, result) => {
         if (err) {
-            return res.sendStatus(403);
+            return next(new createError.InternalServerError('Error during password comparing!'));
         }
 
-        const accessToken = jwt.sign({
-            username: user.username,
-            role: user.role
-        }, process.env.ACCESS_TOKEN_SECRET, {
-            expiresIn: process.env.TOKEN_EXPIRY
-        });
+        if (result) {
+            const accessToken = jwt.sign({ email: user.email }, process.env.ACCESS_TOKEN_SECRET, {
+                expiresIn: process.env.TOKEN_EXPIRY,
+            });
+            return res.json({ accessToken });
+        }
 
-        res.json({
-            accessToken
-        });
+        return next(new createError.BadRequest('Hibás email vagy jelszó!'));
     });
+
+    return false;
 };
 
-module.exports.logout = (req, res) => {
-    const { token } = req.body;
-
-    if (!refreshTokens.includes(token)) {
-        res.sendStatus(403);
-    }
-
-    const tokenIndex = refreshTokens.indexOf(token);
-    refreshTokens.splice(tokenIndex, 1);
-
-    res.sendStatus(200);
+module.exports = {
+    login,
 };
