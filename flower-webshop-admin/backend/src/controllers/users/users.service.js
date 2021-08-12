@@ -6,10 +6,10 @@ exports.create = userData => {
     return user.save();
 };
 
-userService.findOne = (id) => User.findOne({ _id: id });
-userService.findByEmail = (email) => User.findOne({ email });
-userService.findAll = () => User.find().populate('posts');
-userService.update = (id, updateData) => User.findByIdAndUpdate(id, updateData, { new: true });
-userService.delete = id => User.findByIdAndRemove(id);
+exports.findAll = () => User.find().populate('posts');
 
-module.exports = userService;
+exports.findOne = id => User.findById(id).populate('posts');
+
+exports.update = (id, updateData) => User.findByIdAndUpdate(id, updateData, { new: true });
+
+exports.delete = id => User.findByIdAndRemove(id);

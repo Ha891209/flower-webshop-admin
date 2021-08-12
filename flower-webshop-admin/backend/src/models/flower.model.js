@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const idValidator = require('mongoose-id-validator');
 
 const FlowerSchema = mongoose.Schema({
     name: {
@@ -20,7 +19,5 @@ const FlowerSchema = mongoose.Schema({
 }, {
     timestamps: true
 });
-
-FlowerSchema.plugin(idValidator);
 
 module.exports = mongoose.model('Flower', FlowerSchema);

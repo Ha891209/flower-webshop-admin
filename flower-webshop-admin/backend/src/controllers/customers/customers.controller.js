@@ -1,101 +1,79 @@
+/* eslint-disable no-underscore-dangle */
 const createError = require('http-errors');
-
 const customerService = require('../customers/customers.service');
 
+exports.findAll = async (_req, res) => {
+    const customers = await customerService.findAll();
+    res.json(customers);
+    return customers;
+};
 
-
-
-//Create
+exports.findOne = async (req, res, next) => {
+    const customer = await customerService.findOne(req.params.id);
+    if (!customer) {
+        return next(new createError.NotFound('Customer is not found!'));
+    }
+    res.json(customer);
+    return customer;
+};
 
 exports.create = async (req, res, next) => {
-    const { firstName, lastName, email, address, active } = req.body;
-    if (!firstName || !lastName || !email || !address) {
-        return next(
-            new createError.BadRequest('Missing properties!')
-        );
+    const {
+        firstName, lastName, email, address, active,
+    } = req.body;
+
+    if (!firstName || !lastName || !email || !address || !active) {
+        return next(new createError.BadRequest('Missing properties!'));
     }
-
-    const newAddress = await addressService.create(address);
-
-    if (!newAddress) {
-        return next(
-            new createError.InternalServerError('Address created failed. ')
-        );
-    }
-
-    const newCustomer = {
-        firstName,
-        lastName,
-        email,
-        address: newAddress._id,
-        active
+    const newCustomerFromReqBody = {
+        firstName, lastName, email, address, active,
     };
 
-    return customerService.create(newCustomer)
-        .then(cm => {
-            res.status(201);
-            res.json(cm);
-        })
-        .catch(err => next(new createError.InternalServerError(err.message)));
+    const newCustomerFromDatabase = await customerService.create(newCustomerFromReqBody);
+    res.status(201);
+    res.json(newCustomerFromDatabase);
+    return newCustomerFromDatabase;
 };
-
-exports.findAll = (req, res, next) => {
-    return customerService.findAll()
-        .then(customers => {
-            res.json(customers);
-        });
-}
-
-exports.findOne = (req, res, next) => {
-    return customerService.findOne(req.params.id)
-        .then(customer => {
-            if (!customer) {
-                return next(new createError.NotFound("Customer is not found!"));
-            }
-            res.json(customer);
-        })
-};
-
 
 exports.update = async (req, res, next) => {
+    const { id } = req.params;
 
-    const { firstName, lastName, address, active } = req.body;
-    if (!firstName || !lastName || !address) {
-        return next(
-            new createError.BadRequest("Missing properties!")
-        );
+    const {
+        firstName, lastName, email, address, active,
+    } = req.body;
+
+    const oldData = await customerService.findOne(id);
+
+    if (!oldData) {
+        return next(new createError.NotFound('Customer is not found!'));
     }
 
-    const updatedAddress = await customerService.update(address._id, address);
-
-    if (!updatedAddress) {
-        return next(
-            new createError.InternalServerError('Address updated failed. ')
-        );
-    }
-
-
-    const update = {
-        firstName,
-        lastName,
-        address: updatedAddress,
-        active
+    const updatedData = {
+        _id: id,
+        firstName: firstName || oldData.firstName,
+        lastName: lastName || oldData.lastName,
+        email: email || oldData.email,
+        address: address || oldData.address,
+        active: active === undefined ? oldData.active : active,
     };
 
+    let updatedEntity = {};
 
-    return customerService.update(req.params.id, update)
-        .then(customer => {
-            res.json(customer);
-        })
-        .catch(err => {
-            return next(new createError.InternalServerError(err.message));
-        });
+    try {
+        updatedEntity = await customerService.update(updatedData._id, updatedData);
+    } catch (error) {
+        return next(new createError.InternalServerError(error.message));
+    }
+    res.json(updatedEntity);
+    return updatedEntity;
 };
 
-exports.delete = (req, res, next) => {
-    return customerService.delete(req.params.id)
-        .then(() => res.json({}))
-        .catch(err => {
-            return next(new createError.InternalServerError(err.message));
-        });
+exports.delete = async (req, res, next) => {
+    try {
+        await customerService.delete(req.params.id);
+    } catch (error) {
+        return next(new createError.InternalServerError(error.message));
+    }
+    res.json({});
+    return {};
 };

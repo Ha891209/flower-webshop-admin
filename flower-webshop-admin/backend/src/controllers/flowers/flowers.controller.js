@@ -1,4 +1,3 @@
-const express = require('express');
 const createError = require('http-errors');
 
 const flowerService = require('./flowers.service');

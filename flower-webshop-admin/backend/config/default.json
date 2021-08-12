@@ -1,7 +1,7 @@
 {
     "database": {
-        "username": "dbUser",
+        "username": "NodeUser",
         "password": "gwxdgm7CtQvmoLAQ",
-        "host": "mongodb+srv: //Anniesflowerwebshop?retryWrites=true&w=majority"
+        "host": "cluster0.e8kl9.mongodb.net/AnniesFlower?retryWrites=true&w=majority"
     }
 }

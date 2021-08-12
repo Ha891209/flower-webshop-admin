@@ -1,11 +1,11 @@
+const express = require('express');
 const createError = require('http-errors');
 const orderService = require('./order.service');
-const flowerService = require('../flowers/flowers.service');
 
 exports.findAll = (req, res, next) => {
     return orderService.findAll()
-        .then(orders => {
-            res.json(orders);
+        .then(order => {
+            res.json(order);
         });
 }
 
@@ -28,27 +28,26 @@ exports.findOne = (req, res, next) => {
 }
 
 exports.create = async (req, res, next) => {
-    const { flower } = req.body;
-    if (!req.body.customerId || !req.body.amount || !req.body.status || !flower) {
-        return next(new createError.BadRequest("Request body must contain amount, status parameters"));
-    }
-
-    const newFlower = await flowerService.create(flower);
-
-    if (!newFlower) {
+    const { flowers, customerId, amount, status } = req.body;
+    if (!flowers || !customerId || !amount || !status) {
         return next(
-            new createError.InternalServerError('Flower created failed. ')
+            new createError.BadRequest("Missing properties!")
         );
     }
 
-    const orderData = {
-        flower: newFlower._id,
+    const orders = await orderService.findAll();
+    const sortedOrders = [...orders].sort((a, b) => a._id > b._id);
+    const id = sortedOrders[sortedOrders.length - 1]._id + 1;
+
+    const newOrder = {
+        _id: id,
+        flowers: newFlower._id,
         customerId: req.body.customerId,
         amount: req.body.amount,
         status: req.body.status,
     };
 
-    return orderService.create(orderData)
+    return orderService.create(newOrder)
         .then(createdOrder => {
             res.status(201);
             res.json(createdOrder);
@@ -59,14 +58,14 @@ exports.create = async (req, res, next) => {
 
 exports.update = async (req, res, next) => {
 
-    const { customerId, amount, status } = req.body;
-    if (!customerId || !amount || !status) {
+    const { flower, customerId, amount, status } = req.body;
+    if (!flower || !customerId || !amount || !status) {
         return next(
             new createError.BadRequest("Missing properties!")
         );
     }
 
-    return orderService.update(req.params.id, req.body)
+    return orderService.update(id, update)
         .then(order => {
             res.json(order);
         })
