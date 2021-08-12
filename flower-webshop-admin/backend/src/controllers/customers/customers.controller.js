@@ -1,8 +1,7 @@
 const createError = require('http-errors');
 
 const customerService = require('../customers/customers.service');
-const addressService = require('../address/address.service');
-const orderService = require('../orders/order.service');
+
 
 
 
@@ -67,7 +66,7 @@ exports.update = async (req, res, next) => {
         );
     }
 
-    const updatedAddress = await addressService.update(address._id, address);
+    const updatedAddress = await customerService.update(address._id, address);
 
     if (!updatedAddress) {
         return next(

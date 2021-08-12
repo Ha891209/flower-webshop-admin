@@ -1,6 +1,7 @@
 {
     "database": {
-        "databasename": "AnniesFlower",
-        "host": "localhost:27017"
+        "username": "dbUser",
+        "password": "gwxdgm7CtQvmoLAQ",
+        "host": "mongodb+srv: //Anniesflowerwebshop?retryWrites=true&w=majority"
     }
 }

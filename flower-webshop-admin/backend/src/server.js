@@ -19,17 +19,14 @@ const authHandler = require('./auth/authHandler');
 
 const swaggerDocument = YAML.load('./docs/swager.yaml');
 
-const { host } = config.get('database');
+const { databasename, host } = config.get('database');
 mongoose
-    .connect(`mongodb://${host}`, {
+    .connect(`mongodb://${host}/${databasename}`, {
+        //.connect(`mongodb://${host}`, {
         useNewUrlParser: true,
         useUnifiedTopology: true
     })
-    .then(() => {
-        // Data seeds.
-        require('./seed/seeder');
-        logger.info('MongoDB connection has been established successfully.');
-    })
+    .then(() => logger.info('MongoDB connection has been established successfully.'))
     .catch(err => {
         logger.error(err);
         process.exit();
