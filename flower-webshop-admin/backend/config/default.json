@@ -1,6 +1,0 @@
-{
-    "database": {
-        "databasename": "AnniesFlower",
-        "host": "localhost:27017"
-    }
-}
