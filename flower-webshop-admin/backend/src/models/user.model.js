@@ -18,7 +18,7 @@ const UserSchema = mongoose.Schema({
     versionKey: false,
 });
 
-
+UserSchema.plugin(require('mongoose-bcrypt'));
 
 module.exports = mongoose.model('User', UserSchema);
 

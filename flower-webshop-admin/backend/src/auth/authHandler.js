@@ -1,40 +1,96 @@
-const createError = require('http-errors');
 const jwt = require('jsonwebtoken');
-const bcrypt = require('bcrypt');
+const UserModel = require('../models/user.model');
+// Biztonságosabb megoldás, az adatbázis használata.
+// Példa: https://www.npmjs.com/package/mongoose-bcrypt
 
-const userService = require('../controllers/users/users.service');
+(async () => {
+    const admin = new UserModel({ name: 'Admin', email: 'admin@gmail.com', password: 'admin_pw' });
+    const user = new UserModel({ name: 'User', email: 'user@gmail.com', password: 'user_pw' });
+    await admin.save();
+    await user.save();
+})();
 
-const login = async (req, res, next) => {
+const refreshTokens = [];
+
+module.exports.login = async (req, res) => {
     const { email, password } = req.body;
 
-    if (!email || !password) {
-        return next(new createError.BadRequest('Missing properties!'));
-    }
-
-    const user = await userService.findByEmail(email);
-
-    if (!user) {
-        return next(new createError.BadRequest('Hibás email vagy jelszó!'));
-    }
-
-    bcrypt.compare(password, user.password, (err, result) => {
-        if (err) {
-            return next(new createError.InternalServerError('Error during password comparing!'));
+    try {
+        const user = await UserModel.findOne({ email });
+        if (!user) {
+            throw new Error('User not found!');
         }
 
-        if (result) {
-            const accessToken = jwt.sign({ email: user.email }, process.env.ACCESS_TOKEN_SECRET, {
-                expiresIn: process.env.TOKEN_EXPIRY,
-            });
-            return res.json({ accessToken });
+        const verified = await user.verifyPassword(password);
+        if (!verified) {
+            throw new Error('Incorrect Credentials!');
         }
 
-        return next(new createError.BadRequest('Hibás email vagy jelszó!'));
-    });
+        const accessToken = jwt.sign({
+            email: user.email,
+            role: user.role
+        }, process.env.ACCESS_TOKEN_SECRET, {
+            expiresIn: process.env.TOKEN_EXPIRY
+        });
 
-    return false;
+        const refreshToken = jwt.sign({
+            email: user.email,
+            role: user.role
+        }, process.env.REFRESH_TOKEN_SECRET);
+        refreshTokens.push(refreshToken);
+
+        res.json({
+            accessToken,
+            refreshToken,
+            user
+        });
+
+    } catch (e) {
+        res.send('Username or password incorrect.');
+    }
+
 };
 
-module.exports = {
-    login,
+
+module.exports.refresh = (req, res, next) => {
+    const { token } = req.body;
+
+    if (!token) {
+        return res.sendStatus(401);
+    }
+
+    if (!refreshTokens.includes(token)) {
+        console.log(refreshTokens, token);
+        return res.sendStatus(403);
+    }
+
+    jwt.verify(token, process.env.REFRESH_TOKEN_SECRET, (err, user) => {
+        if (err) {
+            return res.sendStatus(403);
+        }
+
+        const accessToken = jwt.sign({
+            username: user.username,
+            role: user.role
+        }, process.env.ACCESS_TOKEN_SECRET, {
+            expiresIn: process.env.TOKEN_EXPIRY
+        });
+
+        res.json({
+            accessToken
+        });
+    });
+};
+
+module.exports.logout = (req, res) => {
+    const { token } = req.body;
+
+    if (!refreshTokens.includes(token)) {
+        res.sendStatus(403);
+    }
+
+    const tokenIndex = refreshTokens.indexOf(token);
+    refreshTokens.splice(tokenIndex, 1);
+
+    res.sendStatus(200);
 };

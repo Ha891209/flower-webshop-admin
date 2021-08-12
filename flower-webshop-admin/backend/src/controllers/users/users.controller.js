@@ -1,102 +1,75 @@
-/* eslint-disable no-underscore-dangle */
+const express = require('express');
 const createError = require('http-errors');
-const bcrypt = require('bcrypt');
 
-const userService = require('../../controllers/users/users.service');
+const userService = require('./users.service');
 
-// For bcrypt
-const saltRounds = 10;
-
-exports.findAll = async (_req, res) => {
-    const users = await userService.findAll();
-    res.json(users);
-    return users;
-};
-
-exports.findOne = async (req, res, next) => {
-    const user = await userService.findOne(req.params.id);
-    if (!user) {
-        return next(new createError.NotFound('User is not found'));
-    }
-    res.json(user);
-    return user;
-};
-
-exports.create = async (req, res, next) => {
-    const {
-        email, password, active,
-    } = req.body;
-
+exports.create = (req, res, next) => {
+    const { email, password, active } = req.body;
     if (!email || !password || !active) {
-        return next(new createError.BadRequest('Missing properties!'));
+        return next(
+            new createError.BadRequest("Missing properties!")
+        );
     }
 
-    let newUserFromDatabase;
+    const newUser = {
 
-    bcrypt.hash(password, saltRounds, async (err, hash) => {
-        if (err) {
-            return next(new createError.InternalServerError('Error during password encryption!'));
-        }
+        email: email,
+        password: password,
+        active: active
+    };
 
-        const newUserFromReqBody = {
-            email,
-            password: hash,
-            active,
-        };
-
-        newUserFromDatabase = await userService.create(newUserFromReqBody);
-        res.status(201);
-        res.json(newUserFromDatabase);
-        return newUserFromDatabase;
-    });
-
-    return newUserFromDatabase;
+    return userService.create(newUser)
+        .then(cp => {
+            res.status(201);
+            res.json(cp);
+        })
+        .catch(err => next(new createError.InternalServerError(err.message)));
 };
 
-exports.update = async (req, res, next) => {
-    const { id } = req.params;
-
-    const {
-        email, password, active,
-    } = req.body;
-
-    const oldData = await userService.findOne(id);
-
-    if (!oldData) {
-        return next(new createError.NotFound('User is not found!'));
-    }
-
-    let updatedEntity = {};
-
-    bcrypt.hash(password, saltRounds, async (err, hash) => {
-        if (err) {
-            return next(new createError.InternalServerError('Error during password encryption!'));
-        }
-
-        const updatedData = {
-            _id: id,
-            email: email || oldData.email,
-            password: hash || oldData.password,
-            active: active === undefined ? oldData.active : active,
-        };
-
-        try {
-            updatedEntity = await adminService.update(updatedData._id, updatedData);
-            return res.json(updatedEntity);
-        } catch (error) {
-            return next(new createError.InternalServerError(error.message));
-        }
-    });
-    return false;
+exports.findAll = (req, res, next) => {
+    return userService.findAll()
+        .then(user => {
+            res.json(user);
+        });
 };
 
-exports.delete = async (req, res, next) => {
-    try {
-        await userService.delete(req.params.id);
-    } catch (error) {
-        return next(new createError.InternalServerError(error.message));
+exports.findOne = (req, res, next) => {
+    return userService.findOne(req.params.id)
+        .then(user => {
+            if (!user) {
+                return next(new createError.NotFound("User is not found"));
+            }
+            return res.json(user);
+        });
+};
+
+exports.update = (req, res, next) => {
+    const id = req.params.id;
+    const { email, password, active } = req.body;
+    if (!email || !password || !active) {
+        return next(
+            new createError.BadRequest("Missing properties!")
+        );
     }
 
-    res.json({});
-    return {};
+    const update = {
+        email: email,
+        password: password,
+        active: active
+    };
+    return userService.update(req.params.id, update)
+        .then(user => {
+            res.json(user);
+        })
+        .catch(err => {
+            next(new createError.InternalServerError(err.message));
+        });
+};
+
+exports.delete = (req, res, next) => {
+    return userService.delete(req.params.id)
+        .then(() => res.json({}))
+        .catch(err => {
+            next(new createError.InternalServerError(err.message));
+        });
 };
