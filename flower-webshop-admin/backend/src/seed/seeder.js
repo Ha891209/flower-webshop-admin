@@ -1,5 +1,4 @@
 const fsp = require('fs').promises;
-const Address = require('../models/address.model');
 const Customer = require('../models/customer.model');
 const Flower = require('../models/flower.model');
 const Order = require('../models/order.model');
@@ -31,7 +30,6 @@ const seedCollection = async (model, fileName) => {
         console.log('CARS NOT FOUND');
     }
 
-    seedCollection(Address, 'address');
     seedCollection(Customer, 'customers');
     seedCollection(Flower, 'flower');
     seedCollection(Order, 'order');
