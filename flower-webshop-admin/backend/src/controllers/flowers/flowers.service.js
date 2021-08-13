@@ -1,6 +1,6 @@
 const Flower = require('../../models/flower.model');
 
-exports.create = flowerData => {
+exports.create = (flowerData) => {
     const flower = new Flower(flowerData);
     return flower.save();
 };

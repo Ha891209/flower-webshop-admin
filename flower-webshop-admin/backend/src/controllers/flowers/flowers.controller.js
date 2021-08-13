@@ -6,19 +6,26 @@ const flowerService = require('./flowers.service');
 
 exports.create = (req, res, next) => {
     const { name, description, active, highlighted, price, image } = req.body;
-    if (!title) {
+    if (!name || !description || !price) {
         return next(
             new createError.BadRequest('Missing properties!')
         );
     }
 
+    // const newFlower = {
+    //     name,
+    //     description,
+    //     active,
+    //     highlighted,
+    //     price,
+    //     image
+    // };
+
     const newFlower = {
         name,
         description,
         active,
-        highlighted,
         price,
-        image
     };
 
     return flowerService.create(newFlower)

@@ -11,10 +11,14 @@ const FlowerSchema = mongoose.Schema({
     },
     active: {
         type: Boolean,
+        required: false,
         default: true
     },
     highlighted: Boolean,
-    price: Number,
+    price: {
+        type: Number,
+        required: true
+    },
     image: String,
 }, {
     timestamps: true

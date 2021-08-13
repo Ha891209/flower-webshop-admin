@@ -6,11 +6,11 @@ exports.create = async orderData => {
     return await order.save();
 };
 
-exports.findAll = () => Order.find().populate('Flower');
+exports.findAll = () => Order.find().populate(['flower', 'customer']);
 
 exports.findOne = id => Order
     .findById(id)
-    .populate('Flower');
+    .populate(['flower', 'customer']);
 
 exports.update = (id, updateData) => Order.findByIdAndUpdate(id, updateData, { new: true });
 

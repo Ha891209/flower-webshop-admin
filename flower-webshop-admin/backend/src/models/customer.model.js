@@ -1,13 +1,21 @@
 const mongoose = require('mongoose');
 
+const AddressSchema = mongoose.Schema({
+    zip: Number,
+    country: String,
+    city: String,
+    street: String,
+    notes: String
+   }, {
+    timeStamps: true
+});
 
 const CustomerSchema = mongoose.Schema({
     firstName: String,
     lastName: String,
     email: String,
     address: {
-        type: mongoose.Schema.Types.ObjectId,
-     ref: 'Address'
+        type: AddressSchema
     },
     active: Boolean,
 }, {

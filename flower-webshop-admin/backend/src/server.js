@@ -24,7 +24,6 @@ const swaggerDocument = YAML.load('./docs/swager.yaml');
         const { host, username, password } = config.get('database');
         const connectionString = `mongodb+srv://${username}:${password}@${host}`;
         await mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
-        require('./seed/seeder');
         logger.info('MongoDB connection has been established successfully.');
     } catch (error) {
         logger.error(error.message);
@@ -38,23 +37,11 @@ app.use(express.json());
 
 // Router.
 app.post('/login', authHandler.login);
-
-
-
-// app.use('/orders', authenticateJwt, require('./controllers/orders/order.routes'));
-// app.use('/customers', authenticateJwt, require('./controllers/customers/customers.routes'));
-// app.use('/flowers', authenticateJwt, require('./controllers/flowers/flowers.routes'));
-// app.use('/users', authenticateJwt, require('./controllers/users/users.routes'));
-// app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-
-app.use('/address', require('./controllers/address/address.routes'));
-app.use('/orders', require('./controllers/orders/order.routes'));
-app.use('/customers', require('./controllers/customers/customers.routes'));
-app.use('/flowers', require('./controllers/flowers/flowers.routes'));
-app.use('/users', require('./controllers/users/users.routes'));
+app.use('/users', authenticateJwt, require('./controllers/users/users.routes'));
+app.use('/orders', authenticateJwt, require('./controllers/orders/order.routes'));
+app.use('/customers', authenticateJwt, require('./controllers/customers/customers.routes'));
+app.use('/flowers', authenticateJwt, require('./controllers/flowers/flowers.routes'));
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-
-
 
 app.use((err, req, res, next) => {
     res.status(err.statusCode || 500);

@@ -6,9 +6,9 @@ exports.create = async (customerData) => {
     return await customer.save();
 };
 
-exports.findAll = () => Customer.find().populate('address');
+exports.findAll = () => Customer.find();
 
-exports.findOne = id => Customer.findById(id).populate('address');
+exports.findOne = id => Customer.findById(id);
 
 exports.findOneAndActive = () => Customer.find({ 'orders.status': 'shipped' });
 

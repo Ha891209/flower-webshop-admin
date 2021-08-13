@@ -5,7 +5,10 @@ const OrderSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Flower',
     },
-    customerId: Number,
+    customer: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Customer',
+    },
     amount: Number,
     status: String
 }, {
