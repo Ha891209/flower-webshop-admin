@@ -4,6 +4,10 @@ export interface ITableCol {
   key: string;
   text: string;
   editable?: boolean;
+  pipes?: any[];
+  pipeArgs?: [any[]];
+  outputTransform?: any;
+  htmlOutput?: any;
 }
 
 export interface SelectedToDelete {
@@ -17,6 +21,7 @@ export interface SelectedToDelete {
 export class ConfigService {
 
   apiUrl: string = 'http://127.0.0.1:3000';
+  static getSubProperty: any;
 
   constructor() { }
 
@@ -42,7 +47,12 @@ export class ConfigService {
     { key: 'firstName', text: 'Keresztnév', editable: true },
     { key: 'lastName', text: 'Vezetéknév', editable: true },
     { key: 'email', text: 'Email', editable: true },
-    { key: 'address', text: 'Cím', editable: true },
+    {
+      key: "address", text: "Cím",
+      pipes: [ConfigService.getSubProperty],
+      pipeArgs: [['zip', 'city', 'street']]
+    },
+
     { key: 'active', text: 'Aktív', editable: true }
   ];
 

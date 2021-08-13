@@ -5,10 +5,10 @@ const CustomerSchema = mongoose.Schema({
     firstName: String,
     lastName: String,
     email: String,
-    // address: {
-    //     type: mongoose.Schema.Types.ObjectId,
-    //     ref: 'Address'
-    // },
+    address: {
+        type: mongoose.Schema.Types.ObjectId,
+     ref: 'Address'
+    },
     active: Boolean,
 }, {
     timestamps: true

@@ -24,6 +24,7 @@ const swaggerDocument = YAML.load('./docs/swager.yaml');
         const { host, username, password } = config.get('database');
         const connectionString = `mongodb+srv://${username}:${password}@${host}`;
         await mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
+        require('./seed/seeder');
         logger.info('MongoDB connection has been established successfully.');
     } catch (error) {
         logger.error(error.message);

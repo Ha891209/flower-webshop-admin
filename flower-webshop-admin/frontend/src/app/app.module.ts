@@ -21,6 +21,7 @@ import { FlowersComponent } from './pages/listing/flowers/flowers.component';
 import { FlowerEditComponent } from './edit/flower-edit/flower-edit.component';
 import { TopoffersComponent } from './pages/topoffers/topoffers.component';
 import { ForbiddenComponent } from './pages/forbidden/forbidden.component';
+import { XPipePipe } from './pipe/x-pipe.pipe';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { ForbiddenComponent } from './pages/forbidden/forbidden.component';
     FlowersComponent,
     TopoffersComponent,
     DataTableComponent,
-    ForbiddenComponent
+    ForbiddenComponent,
+    XPipePipe
   ],
   imports: [
     BrowserModule,
