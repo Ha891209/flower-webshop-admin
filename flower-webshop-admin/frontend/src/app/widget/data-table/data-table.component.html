@@ -22,7 +22,7 @@
     <table class="table table-striped">
         <thead>
             <tr>
-                <th class="sorter-header" *ngFor="let col of tableColumns" (click)="onSort(col.key)">
+                <th class="sorter-header" *ngFor="let col of tableColumns" (click)="onSort(col.key || '')">
                     <i *ngIf="sorterKey === col.key && sorterDirection === 1" class="fa fa-angle-up"></i>
                     <i *ngIf="sorterKey === col.key && sorterDirection === -1" class="fa fa-angle-down"></i>
                     {{ col.text }}
@@ -39,17 +39,12 @@
         <tbody>
             <tr *ngFor="let row of list$ | async | filter:filterKey:phrase | sorter:sorterKey:sorterDirection">
                 <td *ngFor="let col of tableColumns">
-                    <span *ngIf="!row[col.key].zip">
-                        {{ row[col.key] }}
-                    </span>
-                    <span *ngIf="row[col.key].zip">
-                        {{ row[col.key].zip }} {{ row[col.key].country }}
-                        {{ row[col.key].city }} {{ row[col.key].street }}
-                    </span>
+                        {{ row[col.key || ''] }}
+                <span *ngIf="!col.key && col.customized" [innerHTML]="col.htmlOutput(row)">{{ row }}</span>
                 </td>
                 <td>
                     <div class="btn-group">
-                        <button routerLink="{{ row[tableColumns[0].key] }}" class="btn btn-info">
+                        <button routerLink="{{ row[tableColumns[0].key || ''] }}" class="btn btn-info">
                             <i class="fa fa-pencil"></i>
                         </button>
                         <button (click)="selectedItemToDelete(row)" class="btn btn-danger" data-bs-toggle="modal"
@@ -67,7 +62,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Vásárló törlése</h5>
+                <h5 class="modal-title">Törlés</h5>
                 <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>

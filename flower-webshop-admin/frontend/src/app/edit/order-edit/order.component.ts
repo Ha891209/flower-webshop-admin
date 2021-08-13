@@ -24,7 +24,6 @@ export class OrderEditComponent implements OnInit {
     this.activatedRoute.params.subscribe(
       params => {
         this.orderId = params.id
-        console.log(params)
       }
     );
     this.orderService.get(this.orderId).subscribe(

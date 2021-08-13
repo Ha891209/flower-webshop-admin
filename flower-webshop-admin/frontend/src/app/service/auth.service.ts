@@ -36,7 +36,6 @@ export class AuthService {
       loginData
     ).pipe(
       map(response => {
-        console.log(response);
         if (response.user && response.accessToken) {
           this.lastToken = response.accessToken;
           response.user.accessToken = response.accessToken;

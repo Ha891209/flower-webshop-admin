@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 
 export interface ITableCol {
-  key: string;
+  key?: string;
   text: string;
   editable?: boolean;
   pipes?: any[];
   pipeArgs?: [any[]];
   outputTransform?: any;
   htmlOutput?: any;
+  customized?: boolean;
 }
 
 export interface SelectedToDelete {
@@ -27,8 +28,8 @@ export class ConfigService {
 
   orderTableCols: ITableCol[] = [
     { key: '_id', text: '#', editable: false },
-    { key: 'products', text: 'Termékek', editable: true },
-    { key: 'customerID', text: 'Vásárló', editable: true },
+    { text: 'Termék', editable: true, customized: true, htmlOutput: ConfigService.setProductName },
+    { text: 'Vásárló', editable: true, customized: true, htmlOutput: ConfigService.setCustomerName },
     { key: 'amount', text: 'Összeg', editable: true },
     { key: 'status', text: 'Státusz', editable: true }
   ];
@@ -47,12 +48,7 @@ export class ConfigService {
     { key: 'firstName', text: 'Keresztnév', editable: true },
     { key: 'lastName', text: 'Vezetéknév', editable: true },
     { key: 'email', text: 'Email', editable: true },
-    {
-      key: "address", text: "Cím",
-      pipes: [ConfigService.getSubProperty],
-      pipeArgs: [['zip', 'city', 'street']]
-    },
-
+    { text: 'Cím', customized: true, htmlOutput: ConfigService.mergeAddress },
     { key: 'active', text: 'Aktív', editable: true }
   ];
 
@@ -75,4 +71,26 @@ export class ConfigService {
     { key: 'active', text: 'Aktív' },
     { key: 'highlighted', text: 'Kiemelt' },
   ]
+
+  static mergeAddress(row: any): string {
+    if (row) {
+      return `${row.address.zip} ${row.address.city} - ${row.address.street}`;
+    }
+    return '';
+  };
+
+  static setCustomerName(row: any): string {
+    if (row) {
+      return `${row.customer.firstName} ${row.customer.lastName}`;
+    }
+    return '';
+  };
+
+  static setProductName(row: any): string {
+    if (row) {
+      return `${row.flower.name}`;
+    }
+    return '';
+  };
+
 }

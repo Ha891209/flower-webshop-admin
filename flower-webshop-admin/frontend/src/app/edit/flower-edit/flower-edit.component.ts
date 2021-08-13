@@ -25,7 +25,6 @@ export class FlowerEditComponent implements OnInit {
     this.activatedRoute.params.subscribe(
       params => {
         this.flowerId = params.id
-        console.log(params)
       }
     );
     this.flowerService.get(this.flowerId).subscribe(

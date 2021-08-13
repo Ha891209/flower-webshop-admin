@@ -24,11 +24,12 @@ export class CustomerEditComponent implements OnInit {
     this.activatedRoute.params.subscribe(
       params => {
         this.customerId = params.id
-        console.log(params)
       }
     );
     this.customerService.get(this.customerId).subscribe(
-      customer => this.customer = customer
+      customer => {
+        this.customer = customer;
+      }
     );
   }
 

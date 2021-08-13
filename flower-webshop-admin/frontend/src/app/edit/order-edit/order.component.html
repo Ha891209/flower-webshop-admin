@@ -3,34 +3,30 @@
         <div *ngIf="order" class="col-6 offset-3 mt-5">
             <form #orderForm="ngForm" (ngSubmit)="setOrderToDatabase(order)">
                 <div class="form-group">
-                    <label for="products">Termékek:</label>
-                    <input name="products" id="products" [(ngModel)]="order.products" type="text" class="form-control"
-                        required>
-                    <div [hidden]="orderForm.controls.products?.valid || orderForm.controls.products?.pristine"
-                        class="error-message">
-                        Hiányzó típus!
+                    <label for="product">Termék:</label>
+                    <input name="product" id="product" [(ngModel)]="order.flower.name" type="text" class="form-control" required>
+                    <div [hidden]="orderForm.controls.products?.valid || orderForm.controls.products?.pristine" class="error-message">
+                        Hiányzó terméknév!
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="customerID">Megrendelő azonosító</label>
-                    <input name="customerID" id="customerID" [(ngModel)]="order.customerID" type="number"
-                        class="form-control" required>
+                    <label for="customerId">Megrendelő azonosító</label>
+                    <input name="customerId" id="customerId" [(ngModel)]="order.customer._id" type="text" class="form-control" required
+                        readonly>
                 </div>
                 <div class="form-group">
                     <label for="amount">Összeg:</label>
-                    <input name="amount" id="amount" [(ngModel)]="order.amount" type="number" class="form-control"
-                        required>
+                    <input name="amount" id="amount" [(ngModel)]="order.amount" type="number" class="form-control" required>
                 </div>
                 <div class="form-group">
                     <label for="status">Státusz:</label>
-                    <select class="form-control" name="status" id="status" [(ngModel)]="order.status"
-                        pattern="^(new|paid|shipped)$" required>
+                    <select class="form-control" name="status" id="status" [(ngModel)]="order.status" pattern="^(new|paid|shipped)$"
+                        required>
                         <option value="new">New</option>
                         <option value="shipped">Shipped</option>
                         <option value="paid">Paid</option>
                     </select>
-                    <div [hidden]="orderForm.controls.status?.valid || orderForm.controls.status?.pristine"
-                        class="error-message">
+                    <div [hidden]="orderForm.controls.status?.valid || orderForm.controls.status?.pristine" class="error-message">
                         Hiányzó státusz!
                     </div>
                 </div>
