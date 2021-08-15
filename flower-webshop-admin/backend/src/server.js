@@ -1,4 +1,5 @@
 const express = require('express');
+require('dotenv').config();
 const config = require('config');
 const logger = require('./config/logger');
 const app = express();
@@ -17,6 +18,8 @@ const authenticateJwt = require('./auth/authenticate');
 const authHandler = require('./auth/authHandler');
 
 const swaggerDocument = YAML.load('./docs/swager.yaml');
+
+mongoose.Promise = global.Promise;
 
 // Connect to MongoDB database
 (async () => {
@@ -44,11 +47,14 @@ app.use('/flowers', authenticateJwt, require('./controllers/flowers/flowers.rout
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use((err, req, res, next) => {
-    res.status(err.statusCode || 500);
-    res.json({
-        hasError: true,
-        message: err.message
-    });
+    if (!err.statusCode) {
+        res.status(500);
+    } else {
+        res.status(err.statusCode);
+    }
+    logger.error(err.message);
+    res.send(err.message);
 });
 
 module.exports = app;
+
