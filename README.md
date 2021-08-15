@@ -1,48 +1,54 @@
-# **User Story - Adminisztrátori szerepkör**
-
+### Fullstack API - Vizsgaremek
 
 ## **Virág webshop admin felület - Annie's Flowers**
+<br>
+
+
+# **User Story - Adminisztrátori szerepkör**
 
 **A program céljának leírása**
 > A program egy virág webshopnak az admin oldalát testesíti meg, és a menüpontok segítenek a vásárlóknak az oldal használatában.
 ---
 ## _**1. Főoldal**_
-> A főoldalről elérhetjük az aloldalakat (kezdőlap, rólunk, szolgáltatások,kapcsolat, webshop) és kategóriákat(Hello Nyár, Üdv Ősz, Szia Tél, Hahó Tavasz, Dekorációk otthonra).
+> Kezdőlapként láthatjuk a legkeresetebb terméket, majd egy gomb segítségével el is navigálja a felhasználót a további termékekhez.
+> A főoldalről elérhetjük az aloldalakat (vásárlók, virágok, megrendelések, kiemelt ajánlatok) és természetesen itt van lehetőség a be- és kijelentkezésre.
 
 **Elfogadási kritérium:**  
 
 Mobil és desktop kompatibilis nézet.
 
 ---
-## **2. Kezdőlap**
+## **2. Vásárlók oldal**
 
-> A kezdőlapon elérhető a bemutatkozó felület a virág webshop történetéről. 
-
-**Elfogadási kritérium**
-
-Mobil és desktop kompatibilis kinézet.
-
----
-
-## **3. Rólunk**
-
-> A rólunk aloldaon megismerkedhetünk a virág webshop dolgozóival. 
-
-**Elfogadási kritérium**
-
-Mobil és desktop kompatibilis kinézet.
-
----
-## **4. Szolgáltatások**
-
-> A szolgáltatások aloldalon elérhető a webshop által nyújtott lehetőségeket a vásárlók számára. 
-Egy táblázatban lesznek megjelenítve a virágok és lehetőség van új virág felvételére. A a virágokat törölni és módosítani is lehet. 
+> Ezen az oldalon lista nézetben láthatjuk a vásárlókat az adataikkal és van lehetőség új vásárló felvitelére, valamint szerkeszteni és törölni is lehet a vásárlók adatait, illetve van lehetőség keresni is köztük. 
 
 ### Táblázat fejlécei:
-- Virág neve
-- Kategória
-- Van-e még raktáron
+- Keresztnév
+- Vezetéknév
+- Email
+- Aktív
+- Gombok
+
+**Elfogadási kritérium**
+
+- A táblázat felett legyen lehetőség új vásárló felvételére.
+- Lehessen törölni és módosítani a táblázat tartalmát. 
+- Lehessen kategóriák szerint keresni a táblázat tartalmán belül.
+- A felhasználó tudja rendezni a táblázat oszlopait növekvő, illetve csökkenő sorrendbe. 
+- - Mobil és desktop kompatibilis kinézet.
+
+---
+
+## **3. Virágok oldal**
+
+> Ezen az oldalon lista nézetben láthatjuk a virágokat az adataikkal és van lehetőség új virág felvitelére, valamint szerkeszteni és törölni is lehet a virágok adatait, illetve van lehetőség keresni is köztük. 
+
+### Táblázat fejlécei:
+- Név
+- Leírás
+- Aktív
 - Ár
+- Gombok
 
 **Elfogadási kritérium**
 
@@ -50,98 +56,45 @@ Egy táblázatban lesznek megjelenítve a virágok és lehetőség van új virá
 - Lehessen törölni és módosítani a táblázat tartalmát. 
 - Lehessen kategóriák szerint keresni a táblázat tartalmán belül.
 - A felhasználó tudja rendezni a táblázat oszlopait növekvő, illetve csökkenő sorrendbe. 
-- Mobil és desktop kompatibilis kinézet.
----
-
-**Elfogadási kritérium**
-
-Mobil és desktop kompatibilis kinézet.
+- - Mobil és desktop kompatibilis kinézet.
 
 ---
-## **5. Kapcsolat**
+## **4. Megrendelések oldal**
 
-> A kapcsolat aloldalon elérhetjük a webshop elérhetőségeit. 
-
-**Elfogadási kritérium**
-
-Mobil és desktop kompatibilis kinézet.
-
----
-
-## **5. Megrendelések aloldal**
----
 > Ezen az aloldalon egy táblázatban lesznek megjelenítve a megrendelések. Az oldalon lehetőség van új megrendelés hozzáadásához. Valamint a megrendeléseket tudjuk módosítani, és törölni is. 
-Az oldal tetején lévő keresőmező segítségével keresni is tudunk a megrendelések között. 
+Az oldal tetején lévő keresőmező segítségével keresni is tudunk a megrendelések között
 
 ### Táblázat fejlécei:
- - Megrendelt virág neve
- - Megrendelő neve
- - Megrendelő email címe
- - A rendelés árának összege
- - Megrendelés dátuma
+- Termék
+- Vásárló
+- Összeg
+- Státusz
+- Gombok
 
 **Elfogadási kritérium**
 
-- A táblázat felett lehetőség új megrendelés felvételére.
+- A táblázat felett legyen lehetőség új megrendelés felvételére.
 - Lehessen törölni és módosítani a táblázat tartalmát. 
 - Lehessen kategóriák szerint keresni a táblázat tartalmán belül.
 - A felhasználó tudja rendezni a táblázat oszlopait növekvő, illetve csökkenő sorrendbe. 
 - Mobil és desktop kompatibilis kinézet.
 ---
-## **6. Webshop**
-
-> A webshop aloldalon a vásárló a menü segítségével további aloldalakat tud elérni (Hello Nyár, Üdv Ősz, Szia Tél, Hahó Tavasz, Dekorációk otthonra). 
 
 **Elfogadási kritérium**
 
 Mobil és desktop kompatibilis kinézet.
 
 ---
-## **7. Hello Nyár**
+## **5. Kiemelt ajánlatok oldal**
 
-> A vásárló a szezonális nyári virágok közül válogathat. Virágcsokrok és virágdobozok közül van lehetőség válogatni, szereplnek a virágok nevei és árai.
-
-**Elfogadási kritérium**
-
-Mobil és desktop kompatibilis kinézet.
-
----
-## **7. Üdv Ősz**
-
-> A vásárló a szezonális őszi virágok közül válogathat. Virágcsokrok és virágdobozok közül van lehetőség válogatni, szereplnek a virágok nevei és árai.
+> A kiemelt ajánlatokat, virágokat láthatjuk képpel, névvel és leírással. Mindegyik képnél van lehetőség használni a tovább a virágokhoz gombot, amely elnavigál a virágok oldalhoz.
 
 **Elfogadási kritérium**
 
 Mobil és desktop kompatibilis kinézet.
 
 ---
-## **7. Szia Tél**
 
-> A vásárló a szezonális téli virágok közül válogathat. Virágcsokrok és virágdobozok közül van lehetőség válogatni, szereplnek a virágok nevei és árai.
-
-**Elfogadási kritérium**
-
-Mobil és desktop kompatibilis kinézet.
-
----
-## **7. Hahó Tavasz**
-
-> A vásárló a szezonális tavaszi virágok közül válogathat. Virágcsokrok és virágdobozok közül van lehetőség válogatni, szereplnek a virágok nevei és árai.
-
-**Elfogadási kritérium**
-
-Mobil és desktop kompatibilis kinézet.
-
----
-## **8. Dekorációk otthonra**
-
-> A vásárló a az otthoni dekorációk közül válogathat. Az oldalon ajtódíszek közül tudunk válogatni, ahol szerepelnek a dekorációk nevei és árai.
-
-**Elfogadási kritérium**
-
-Mobil és desktop kompatibilis kinézet.
-
----
 ## **Egyéb információk**
 
 - A projekt megvalósítására tervezett idő: 10 hét. 
