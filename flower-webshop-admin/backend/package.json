@@ -8,7 +8,8 @@
     "test": "jest",
     "docker:build": "docker build -t annies-flower .",
     "docker:run": "docker run -p 3000:3000 -it --name=\"annies-flower\" --rm annies-flower",
-    "docker:start": "npm run docker:build && docker image prune -f && npm run docker:run"
+    "docker:start": "npm run docker:build && docker image prune -f && npm run docker:run",
+    "build": "cd ../frontend && ng build && npx copyfiles -f ./dist/frontend/* ../backend/public && cd ../backend && docker-compose up"
   },
   "dependencies": {
     "config": "^3.3.6",
