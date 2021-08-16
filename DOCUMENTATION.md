@@ -24,14 +24,14 @@ Az alkalmazás feladata, hogy az Annie's Flower webshop adatait nyilvántartsa �
 
 - Ha még nincsen fenn a célgépen, akkor telepíteni kell az Angular keretrendszert az `npm i -g @angular/cli` paranccsal.
 - A terminálban ki kell adni az `ng build` parancsot.
-- A /frontend/dist/frontend mappa tartalmát be kell másolni a /backend/public mappába.
+- A /frontend/dist/admin-frontend mappa tartalmát be kell másolni a /backend/public mappába.
 
 ## **3. Az alkalmazás konfigurálása**
 
 A /frontend/environments mappában be kell állítani az API végpont elérési útvonalát: 
 
-  - _environment.ts_ állomány: http://127.0.0.1:3000/  
-  - _environment.prod.ts_ állomány: http://localhost:3000/ 
+  - _environment.ts_ állomány: http://127.0.0.1:3000/api/  
+  - _environment.prod.ts_ állomány: http://localhost:3000/api/ 
 
 ## **4. Az alkalmazás indítása**
 
@@ -51,7 +51,7 @@ A belépéshez egy érvényes e-mail-cím és jelszó páros (példa):
 ## **5. A végpontok dokumentációja**
 
 Swagger 
-- Az alábbi URL-t kell beírni a böngészőbe: https://localhost:3000/api-docs
+- Az alábbi URL-t kell beírni a böngészőbe: https://localhost:3000/api/api-docs
 
 ---
 ---
