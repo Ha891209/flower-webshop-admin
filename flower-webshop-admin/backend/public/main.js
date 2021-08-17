@@ -960,7 +960,7 @@ __webpack_require__.r(__webpack_exports__);
 
 class ConfigService {
     constructor() {
-        this.apiUrl = 'http://127.0.0.1:3000';
+        this.apiUrl = 'http://127.0.0.1:3000/api';
         this.orderTableCols = [
             { key: '_id', text: '#', editable: false },
             { text: 'Termék', editable: true, customized: true, htmlOutput: ConfigService.setProductName },

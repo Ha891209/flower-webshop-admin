@@ -39,12 +39,18 @@ app.use(morgan('combined', { stream: logger.stream }));
 app.use(express.json());
 
 // Router.
-app.post('/login', authHandler.login);
-app.use('/users', authenticateJwt, require('./controllers/users/users.routes'));
-app.use('/orders', authenticateJwt, require('./controllers/orders/order.routes'));
-app.use('/customers', authenticateJwt, require('./controllers/customers/customers.routes'));
-app.use('/flowers', authenticateJwt, require('./controllers/flowers/flowers.routes'));
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.post('/api/login', authHandler.login);
+app.use('/api/users', authenticateJwt, require('./controllers/users/users.routes'));
+app.use('/api/orders', authenticateJwt, require('./controllers/orders/order.routes'));
+app.use('/api/customers', authenticateJwt, require('./controllers/customers/customers.routes'));
+app.use('/api/flowers', authenticateJwt, require('./controllers/flowers/flowers.routes'));
+app.use('/api/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
+app.use(express.static('public'));
+// Frontend routing to force
+app.get('*', (_req, res) => {
+    res.sendFile(join(__dirname, '../public/index.html'));
+});
 
 app.use((err, req, res, next) => {
     if (!err.statusCode) {

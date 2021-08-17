@@ -21,7 +21,7 @@ export interface SelectedToDelete {
 })
 export class ConfigService {
 
-  apiUrl: string = 'http://127.0.0.1:3000';
+  apiUrl: string = 'http://127.0.0.1:3000/api';
   static getSubProperty: any;
 
   constructor() { }
