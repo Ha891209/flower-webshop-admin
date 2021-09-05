@@ -11,7 +11,9 @@
 ---
 ## _**1. Főoldal**_
 > A főoldalon láthatjuk a legnépszerűbb terméket, majd egy gomb segítségével el is navigálja a felhasználót a további termékekhez. A főoldalról elérhetjük az aloldalakat (vásárlók, virágok, megrendelések, kiemelt ajánlatok) és természetesen itt van lehetőség a be- és kijelentkezésre.                                  
-> A főoldalról elérhetjük az aloldalakat (vásárlók, virágok, megrendelések, kiemelt ajánlatok) és természetesen itt van lehetőség a be- és kijelentkezésre.                                  
+> A főoldalról elérhetjük az aloldalakat (vásárlók, virágok, megrendelések, kiemelt ajánlatok) és természetesen itt van lehetőség a be- és kijelentkezésre.
+
+                               
 **Elfogadási kritérium:**  
 
 Mobil és desktop kompatibilis nézet.
