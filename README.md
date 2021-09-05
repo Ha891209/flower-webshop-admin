@@ -10,9 +10,8 @@
 > A program egy virág webshopnak az admin oldalát testesíti meg, és a menüpontok segítenek a vásárlóknak az oldal használatában.
 ---
 ## _**1. Főoldal**_
-> Kezdőlapként láthatjuk a legkeresetebb terméket, majd egy gomb segítségével el is navigálja a felhasználót a további termékekhez.
-> A főoldalről elérhetjük az aloldalakat (vásárlók, virágok, megrendelések, kiemelt ajánlatok) és természetesen itt van lehetőség a be- és kijelentkezésre.
-
+> A főoldalon láthatjuk a legnépszerűbb terméket, majd egy gomb segítségével el is navigálja a felhasználót a további termékekhez. A főoldalról elérhetjük az aloldalakat (vásárlók, virágok, megrendelések, kiemelt ajánlatok) és természetesen itt van lehetőség a be- és kijelentkezésre.                                  
+> A főoldalról elérhetjük az aloldalakat (vásárlók, virágok, megrendelések, kiemelt ajánlatok) és természetesen itt van lehetőség a be- és kijelentkezésre.                                  
 **Elfogadási kritérium:**  
 
 Mobil és desktop kompatibilis nézet.
